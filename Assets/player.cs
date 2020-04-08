@@ -21,7 +21,12 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Vector3 nuevaVelocidad = rb.velocity;
+        nuevaVelocidad.x *= 0.75f;
+        if (pisando)
+        {
+            rb.velocity = nuevaVelocidad;
+        }
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         animator.SetBool("Pisando", pisando);
         float h = Input.GetAxis("Horizontal");
@@ -45,6 +50,11 @@ public class player : MonoBehaviour
             rb.AddForce(Vector2.up *JumpForce, ForceMode2D.Impulse);
             jump = false;
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        transform.position = new Vector3(0, 0, 0);
     }
 
 
