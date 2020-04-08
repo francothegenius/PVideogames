@@ -23,7 +23,7 @@ public class VerificarSuelo : MonoBehaviour
     {
         if (collision.gameObject.tag == "SueloMovil")
         {
-            rb.velocity = new Vector3(0f, 0f, 0f);
+            rb.velocity = new Vector3(0f, 0f, 0f);  
             player.transform.parent = collision.transform;
             player.pisando = true;
         }
