@@ -11,6 +11,8 @@ public class player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private bool jump;
+    private bool doubleJump;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,10 +45,23 @@ public class player : MonoBehaviour
             transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && pisando) {
-            jump = true;
+        if (pisando) {
+            doubleJump = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            if (pisando)
+            {
+                jump = true;
+                doubleJump = true;
+            }
+            else if (doubleJump) {
+                jump = true;
+                doubleJump = false;
+            }
         }
         if (jump) {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up *JumpForce, ForceMode2D.Impulse);
             jump = false;
         }
