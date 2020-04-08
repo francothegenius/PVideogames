@@ -36,11 +36,11 @@ public class player : MonoBehaviour
         rb.velocity = new Vector2(limitSpeed, rb.velocity.y);
 
         if (h>0.1f) {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         }
         if (h < -0.1f)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && pisando) {
