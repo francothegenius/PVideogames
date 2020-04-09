@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private Vector3 inicio, fin;
     private Animator animator;
     private bool death;
+    private bool attack;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         animator.SetBool("Death", death);
+        animator.SetBool("attack", attack);
 
         //rb.AddForce(Vector2.right * speed);
         //float limitSpeed = Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed);
@@ -55,13 +57,12 @@ public class Enemy : MonoBehaviour
 
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("Hola");
+    private void OnTriggerEnter2D(Collider2D collider){
+        if(collider.gameObject.tag == "Player"){
+            Destroy(collider.gameObject);
+            attack = true;
         }
-    }*/
+    }
 
 
 }

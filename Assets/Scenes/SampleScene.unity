@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 38815808}
   - component: {fileID: 38815809}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: suelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 208794974}
   m_Layer: 0
   m_Name: TilesExamples_3
-  m_TagString: Untagged
+  m_TagString: Suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1263,7 +1263,7 @@ PrefabInstance:
     - target: {fileID: 675151290496858395, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.94
+      value: 33.26
       objectReference: {fileID: 0}
     - target: {fileID: 675151290496858395, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
@@ -1555,7 +1555,7 @@ PrefabInstance:
     - target: {fileID: 675151290666681383, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.42
+      value: 1.87
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b21a788a810f64e8db8a03c90909deb5, type: 3}
@@ -1745,7 +1745,7 @@ GameObject:
   - component: {fileID: 785045688}
   m_Layer: 0
   m_Name: TilesExamples_1
-  m_TagString: Untagged
+  m_TagString: Suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2140,7 +2140,7 @@ GameObject:
   - component: {fileID: 1035808424}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2223,7 +2223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035808419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.6, y: 1.04, z: 0}
+  m_LocalPosition: {x: 5.07, y: -3.13, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 38815807}
@@ -2261,12 +2261,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03497161, y: 0.859546}
+  m_Offset: {x: 0.103043616, y: 0.85954607}
   serializedVersion: 2
-  m_Radius: 0.48650286
+  m_Radius: 0.70174605
 --- !u!114 &1035808425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3890,6 +3890,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 675151290496858385, guid: b21a788a810f64e8db8a03c90909deb5,
+        type: 3}
+      propertyPath: velocidad
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 675151290496858386, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
       propertyPath: m_Name
@@ -3898,12 +3903,12 @@ PrefabInstance:
     - target: {fileID: 675151290496858395, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.99
+      value: 7.139
       objectReference: {fileID: 0}
     - target: {fileID: 675151290496858395, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 675151290496858395, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
@@ -3949,6 +3954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675151290666681383, guid: b21a788a810f64e8db8a03c90909deb5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b21a788a810f64e8db8a03c90909deb5, type: 3}
