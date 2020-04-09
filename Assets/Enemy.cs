@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private bool death;
     private bool attack;
+
+    public Transform player;
     // Start is called before the first frame update
     void Start()
     {
