@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     private bool death;
     private bool attack;
 
-    public Transform player;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +60,14 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag == "Player"){
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale.x == 0.8f)
+            {
+            transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
+            }
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().localScale.x == -0.8f)
+            {
+            transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            }
             Destroy(collider.gameObject);
             attack = true;
         }
