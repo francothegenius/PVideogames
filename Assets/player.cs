@@ -13,6 +13,8 @@ public class player : MonoBehaviour
     private bool jump;
     private bool doubleJump;
 
+    private bool attack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class player : MonoBehaviour
         }
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         animator.SetBool("Pisando", pisando);
+        animator.SetBool("attack", attack);
         float h = Input.GetAxis("Horizontal");
         rb.AddForce(Vector2.right * speed * h);
         // Debug.Log(rb.velocity.x);
@@ -65,6 +68,18 @@ public class player : MonoBehaviour
             rb.AddForce(Vector2.up *JumpForce, ForceMode2D.Impulse);
             jump = false;
         }
+
+        if(Input.GetKeyDown(KeyCode.Return)){
+
+            attack = true;
+
+        }
+        if(Input.GetKeyUp(KeyCode.Return)){
+
+            attack = false;
+
+        }
+
     }
 
     private void OnBecameInvisible()
