@@ -6,25 +6,29 @@ public class Enemy : MonoBehaviour
 {
     //public float maxSpeed = 1f;
     //public float speed = 1f;
-    //private Rigidbody2D rb;
+    private Rigidbody2D rb;
     public Transform objetivo;
     public float velocidad;
     private Vector3 inicio, fin;
+    private Animator animator;
+    private bool death;
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         if (objetivo != null)
         {
             objetivo.parent = null;
             inicio = transform.position;
             fin = objetivo.position;
         }
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("Death", death);
 
         //rb.AddForce(Vector2.right * speed);
         //float limitSpeed = Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed);
@@ -47,5 +51,17 @@ public class Enemy : MonoBehaviour
         {
             transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
         }
+
+
     }
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Hola");
+        }
+    }*/
+
+
 }
