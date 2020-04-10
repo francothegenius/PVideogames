@@ -68,9 +68,15 @@ public class Enemy : MonoBehaviour
             {
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             }
-            Destroy(collider.gameObject);
+            //Destroy(collider.gameObject);
+            collider.SendMessage("atacado", transform.position.x);
             attack = true;
+            Invoke("atacarFalso", 0.7f);
         }
+    }
+
+    public void atacarFalso() {
+        attack = false;
     }
 
 

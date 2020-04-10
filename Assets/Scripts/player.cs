@@ -12,6 +12,7 @@ public class player : MonoBehaviour
     private Animator animator;
     private bool jump;
     private bool doubleJump;
+    private bool movimiento=true;
 
     private bool attack;
     private Collider2D collider;
@@ -37,6 +38,10 @@ public class player : MonoBehaviour
         animator.SetBool("Pisando", pisando);
         animator.SetBool("attack", attack);
         float h = Input.GetAxis("Horizontal");
+        if (!movimiento)
+        {
+            h = 0;
+        }
         rb.AddForce(Vector2.right * speed * h);
         // Debug.Log(rb.velocity.x);
         float limitSpeed = Mathf.Clamp(rb.velocity.x,-maxSpeed,maxSpeed);
@@ -117,6 +122,18 @@ public class player : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+    }
+
+    public void atacado(float posEnemigo) {
+        jump = true;
+        float lado = Mathf.Sign(posEnemigo-transform.position.x);
+        rb.AddForce(Vector2.left * lado * JumpForce, ForceMode2D.Impulse);
+        movimiento = false;
+        Invoke("movimientoActivado", 0.7f);
+    }
+
+    public void movimientoActivado() {
+        movimiento = true;
     }
 
 }
