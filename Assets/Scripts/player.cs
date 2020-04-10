@@ -91,6 +91,11 @@ public class player : MonoBehaviour
             //attack = false;       
             StopCoroutine(enableCollider()); 
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = new Vector3(0, 0, 0);
+            barraVida.SendMessage("resetVida");
+        }
 
     }
 
@@ -117,7 +122,8 @@ public class player : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        transform.position = new Vector3(0, 0, 0);
+        
+        barraVida.SendMessage("bajaVida", 100);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -18,4 +18,10 @@ public class BarraVida : MonoBehaviour
         vida = Mathf.Clamp(vida-cantidad,0f, maxVida);
         barraVida.transform.localScale = new Vector2(vida/maxVida, 1);
     }
+
+    public void resetVida() 
+    {
+        vida = maxVida;
+        barraVida.transform.localScale = new Vector2(1,1);
+    }
 }
