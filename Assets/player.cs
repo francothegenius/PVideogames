@@ -15,13 +15,13 @@ public class player : MonoBehaviour
 
     private bool attack;
     private Collider2D collider;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        collider = GetComponent<Collider2D>();
+        collider = GetComponent<Collider2D>();        
     }
 
     // Update is called once per frame
@@ -72,19 +72,29 @@ public class player : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.Return)){
-
             attack = true;
-            collider.enabled = !collider.enabled;
-
+            StartCoroutine(enableCollider());
         }
         if(Input.GetKeyUp(KeyCode.Return)){
-
-            attack = false;
             collider.enabled = true;
-
+            attack = false;       
+            StopCoroutine(enableCollider()); 
         }
 
     }
+
+    private IEnumerator enableCollider(){
+        while(attack){
+            collider.enabled = false;
+            yield return null;
+        }
+    }
+
+
+
+
+
+
 
     private void OnBecameInvisible()
     {
