@@ -14,7 +14,7 @@ public class player : MonoBehaviour
     private bool doubleJump;
     private bool movimiento=true;
     private SpriteRenderer sp;
-
+    private bool vida;
     private GameObject barraVida;
     private bool attack;
     private Collider2D collider;
@@ -27,6 +27,7 @@ public class player : MonoBehaviour
         collider = GetComponent<Collider2D>();
         sp = GetComponent<SpriteRenderer>();
         barraVida = GameObject.Find("BarraVida");
+        vida = true;
     }
 
     // Update is called once per frame
@@ -41,6 +42,7 @@ public class player : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         animator.SetBool("Pisando", pisando);
         animator.SetBool("attack", attack);
+        animator.SetBool("vida", vida);
         float h = Input.GetAxis("Horizontal");
         if (!movimiento)
         {
@@ -95,6 +97,10 @@ public class player : MonoBehaviour
         {
             transform.position = new Vector3(0, 0, 0);
             barraVida.SendMessage("resetVida");
+            vida = true;
+            jump = true;
+            speed = 28f;
+            JumpForce = 8f;
         }
 
     }
@@ -135,13 +141,23 @@ public class player : MonoBehaviour
     }
 
     public void atacado(float posEnemigo) {
-        barraVida.SendMessage("bajaVida", 15);
-        jump = true;
-        float lado = Mathf.Sign(posEnemigo-transform.position.x);
-        rb.AddForce(Vector2.left * lado * JumpForce, ForceMode2D.Impulse);
-        movimiento = false;
-        Invoke("movimientoActivado", 0.7f);
-        sp.color = Color.red;
+        if (barraVida.GetComponent<Transform>().FindChild("Vida").localScale.x<0.1)
+        {
+            vida = false;
+            speed = 0;
+            jump = false;
+            JumpForce = 0;
+        }
+        else
+        {
+            barraVida.SendMessage("bajaVida", 15);
+            jump = true;
+            float lado = Mathf.Sign(posEnemigo - transform.position.x);
+            rb.AddForce(Vector2.left * lado * JumpForce, ForceMode2D.Impulse);
+            movimiento = false;
+            Invoke("movimientoActivado", 0.7f);
+            sp.color = Color.red;
+        }
     }
 
     public void movimientoActivado() {

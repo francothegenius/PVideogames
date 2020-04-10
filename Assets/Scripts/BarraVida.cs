@@ -24,4 +24,16 @@ public class BarraVida : MonoBehaviour
         vida = maxVida;
         barraVida.transform.localScale = new Vector2(1,1);
     }
+
+    public bool tieneVida() {
+        if (vida == 0) 
+        {
+            return false;
+
+        }
+        else
+        {
+            return true;
+        }
+    } 
 }
