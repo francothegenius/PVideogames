@@ -73,11 +73,13 @@ public class player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Return)){
             attack = true;
-            StartCoroutine(enableCollider());
+            collider.enabled = false;
+            //StartCoroutine(enableCollider());
+            StartCoroutine(waitForSec(0.8f));
         }
         if(Input.GetKeyUp(KeyCode.Return)){
-            collider.enabled = true;
-            attack = false;       
+            //collider.enabled = true;
+            //attack = false;       
             StopCoroutine(enableCollider()); 
         }
 
@@ -89,6 +91,14 @@ public class player : MonoBehaviour
             yield return null;
         }
     }
+
+    //codigo de prueba
+     private IEnumerator waitForSec(float sec){
+        yield return new WaitForSeconds(sec);
+        collider.enabled = true;
+        attack = false;
+ 
+ }
 
 
 
