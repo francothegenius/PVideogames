@@ -75,7 +75,7 @@ public class player : MonoBehaviour
             attack = true;
             collider.enabled = false;
             //StartCoroutine(enableCollider());
-            StartCoroutine(waitForSec(0.8f));
+            StartCoroutine(waitForSec(0.6f));
         }
         if(Input.GetKeyUp(KeyCode.Return)){
             //collider.enabled = true;
