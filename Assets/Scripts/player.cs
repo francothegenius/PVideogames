@@ -13,7 +13,9 @@ public class player : MonoBehaviour
     private bool jump;
     private bool doubleJump;
     private bool movimiento=true;
+    private SpriteRenderer sp;
 
+    private GameObject barraVida;
     private bool attack;
     private Collider2D collider;
     
@@ -22,7 +24,9 @@ public class player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        collider = GetComponent<Collider2D>();        
+        collider = GetComponent<Collider2D>();
+        sp = GetComponent<SpriteRenderer>();
+        barraVida = GameObject.Find("BarraVida");
     }
 
     // Update is called once per frame
@@ -125,15 +129,18 @@ public class player : MonoBehaviour
     }
 
     public void atacado(float posEnemigo) {
+        barraVida.SendMessage("bajaVida", 15);
         jump = true;
         float lado = Mathf.Sign(posEnemigo-transform.position.x);
         rb.AddForce(Vector2.left * lado * JumpForce, ForceMode2D.Impulse);
         movimiento = false;
         Invoke("movimientoActivado", 0.7f);
+        sp.color = Color.red;
     }
 
     public void movimientoActivado() {
         movimiento = true;
+        sp.color = Color.white;
     }
 
 }
