@@ -19,4 +19,11 @@ public class Bullet : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collider){
+        if(collider.gameObject.tag == "Player"){
+            collider.SendMessage("atacado", transform.position.x);
+        }
+        
+    }
 }
