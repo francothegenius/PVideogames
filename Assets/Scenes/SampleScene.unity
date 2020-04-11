@@ -2576,8 +2576,8 @@ GameObject:
   m_Component:
   - component: {fileID: 349258098}
   m_Layer: 0
-  m_Name: reference
-  m_TagString: Untagged
+  m_Name: referenceDerecha
+  m_TagString: mushDerecha
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2596,6 +2596,36 @@ Transform:
   m_Father: {fileID: 611305560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &372936921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 372936922}
+  m_Layer: 0
+  m_Name: referenceIzquierda
+  m_TagString: mushIzquierda
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &372936922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372936921}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.34, y: 0.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 611305560}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &382346799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4275791053877509573, guid: b05377a618ad3ae4f808b5a68616c159,
@@ -4295,8 +4325,8 @@ GameObject:
   - component: {fileID: 611305559}
   - component: {fileID: 611305558}
   - component: {fileID: 611305557}
-  - component: {fileID: 611305556}
   - component: {fileID: 611305561}
+  - component: {fileID: 611305556}
   m_Layer: 0
   m_Name: mushroom
   m_TagString: Untagged
@@ -4317,8 +4347,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1305427533609444212, guid: 499fd33216c7e44aa89140a07056d50d, type: 3}
-  reference: {fileID: 349258098}
+  reference: {fileID: 372936922}
   player: {fileID: 1035808419}
+  izquierda: {fileID: 372936921}
+  derecha: {fileID: 349258097}
 --- !u!50 &611305557
 Rigidbody2D:
   serializedVersion: 4
@@ -4419,6 +4451,7 @@ Transform:
   m_LocalScale: {x: 0.64, y: 0.55, z: 0}
   m_Children:
   - {fileID: 349258098}
+  - {fileID: 372936922}
   m_Father: {fileID: 0}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

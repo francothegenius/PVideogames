@@ -7,9 +7,10 @@ public class Mushroom : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject bullet;
     public Transform reference;
-
     public GameObject player;
 
+    public GameObject izquierda;
+    public GameObject derecha;
     private bool attack = true;
 
     private float fireRate;
@@ -25,6 +26,7 @@ public class Mushroom : MonoBehaviour
         animator = GetComponent<Animator>();
         fireRate = 0.95f;
         nextFire = Time.time;
+
         
     }
 
@@ -39,11 +41,11 @@ public class Mushroom : MonoBehaviour
 
         if(transform.position.x > player.transform.position.x){
             transform.localScale = new Vector3(-0.64f, 0.55f, 0f);
-            reference.transform.Rotate(0,180,0);
+            reference = izquierda.transform;
         }
         if(transform.position.x < player.transform.position.x){
             transform.localScale = new Vector3(0.64f, 0.55f, 0f);
-            reference.transform.Rotate(0,180,0);
+            reference = derecha.transform;
         }
     }
 

@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - espada
   - cuerpo
+  - mushDerecha
+  - mushIzquierda
   layers:
   - Default
   - TransparentFX
