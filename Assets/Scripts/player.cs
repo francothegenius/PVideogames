@@ -118,7 +118,7 @@ public class player : MonoBehaviour
         collider.enabled = true;
         attack = false;
  
- }
+    }
 
 
 
