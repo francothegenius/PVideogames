@@ -20,7 +20,7 @@ public class Mushroom : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        fireRate = 1f;
+        fireRate = 0.95f;
         nextFire = Time.time;
         
     }
@@ -28,11 +28,15 @@ public class Mushroom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        shoot();
+        animator.SetBool("attack", attack);
+        if(attack == true){
+            shoot();
+        }
     }
 
     public void shoot(){
         if(Time.time > nextFire){
+            attack = true;
             Instantiate(bullet,
             reference.position,
             reference.rotation
