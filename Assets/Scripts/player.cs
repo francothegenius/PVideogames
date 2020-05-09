@@ -18,6 +18,7 @@ public class player : MonoBehaviour
     private GameObject barraVida;
     private bool attack;
     private Collider2D collider;
+    public Vector3 respawn;
     
     // Start is called before the first frame update
     void Start()
@@ -95,7 +96,7 @@ public class player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            transform.position = new Vector3(0, 0, 0);
+            transform.position = respawn;
             barraVida.SendMessage("resetVida");
             vida = true;
             jump = true;
@@ -119,13 +120,6 @@ public class player : MonoBehaviour
         attack = false;
  
     }
-
-
-
-
-
-
-
     private void OnBecameInvisible()
     {
         
@@ -137,6 +131,12 @@ public class player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && attack) 
         {
             Destroy(collision.gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider){
+        if(collider.gameObject.tag == "checkpoint"){
+            respawn = collider.transform.position;
         }
     }
 

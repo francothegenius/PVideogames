@@ -11,6 +11,7 @@ TagManager:
   - cuerpo
   - mushDerecha
   - mushIzquierda
+  - checkpoint
   layers:
   - Default
   - TransparentFX
