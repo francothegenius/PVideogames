@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class BarraVida : MonoBehaviour
 {
     public Image barraVida;
-    float vida, maxVida = 100f;
+    public float vida, maxVida = 100f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,14 @@ public class BarraVida : MonoBehaviour
         barraVida.transform.localScale = new Vector2(1,1);
     }
 
+    public bool fullVida(){
+        if(vida == 100){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public bool tieneVida() {
         if (vida == 0) 
         {
@@ -36,4 +46,5 @@ public class BarraVida : MonoBehaviour
             return true;
         }
     } 
+
 }

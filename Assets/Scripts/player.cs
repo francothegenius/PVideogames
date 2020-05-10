@@ -18,7 +18,7 @@ public class player : MonoBehaviour
     private GameObject barraVida;
     private bool attack;
     private Collider2D collider;
-    public Vector3 respawn;
+    private Vector3 respawn;
     
     // Start is called before the first frame update
     void Start()
@@ -137,6 +137,10 @@ public class player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag == "checkpoint"){
             respawn = collider.transform.position;
+        }
+        if(collider.gameObject.tag == "HP" && barraVida.GetComponent<BarraVida>().vida != 100){
+            barraVida.SendMessage("resetVida");
+            Destroy(collider.gameObject);
         }
     }
 
