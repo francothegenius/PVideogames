@@ -12,6 +12,7 @@ TagManager:
   - mushDerecha
   - mushIzquierda
   - checkpoint
+  - HP
   layers:
   - Default
   - TransparentFX
