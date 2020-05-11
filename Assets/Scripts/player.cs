@@ -145,7 +145,7 @@ public class player : MonoBehaviour
     }
 
     public void atacado(float posEnemigo) {
-        if(barraVida.GetComponent<Transform>().FindChild("Vida").localScale.x>0f){
+        if(barraVida.GetComponent<Transform>().Find("Vida").localScale.x>0f){
             barraVida.SendMessage("bajaVida", 15);
             jump = true;
             float lado = Mathf.Sign(posEnemigo - transform.position.x);
@@ -154,7 +154,7 @@ public class player : MonoBehaviour
             Invoke("movimientoActivado", 0.7f);
             sp.color = Color.red;
         }
-        if (barraVida.GetComponent<Transform>().FindChild("Vida").localScale.x==0f)
+        if (barraVida.GetComponent<Transform>().Find("Vida").localScale.x==0f)
         {
             vida = false;
             speed = 0;
