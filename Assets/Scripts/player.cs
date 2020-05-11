@@ -19,6 +19,13 @@ public class player : MonoBehaviour
     private bool attack;
     private Collider2D collider;
     private Vector3 respawn;
+    private AudioSource audioPlayer;
+    public AudioClip audioCaminar;
+    public AudioClip audioSaltar;
+    public AudioClip audioSaltarDoble;
+    public bool isMoving=false;
+
+
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +36,7 @@ public class player : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
         barraVida = GameObject.Find("BarraVida");
         vida = true;
+        audioPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,6 +61,23 @@ public class player : MonoBehaviour
         // Debug.Log(rb.velocity.x);
         float limitSpeed = Mathf.Clamp(rb.velocity.x,-maxSpeed,maxSpeed);
         rb.velocity = new Vector2(limitSpeed, rb.velocity.y);
+        //Debug.Log(rb.velocity.);
+        if (h!= 0)
+        {
+            isMoving = true;
+        }
+        else {
+            isMoving = false;
+        }
+
+        if (isMoving && pisando)
+        {
+            audioPlayer.clip = audioCaminar;
+            if (!audioPlayer.isPlaying)
+            {
+               audioPlayer.Play();
+            }
+        }
 
         if (h>0.1f) {
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
@@ -69,13 +94,18 @@ public class player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (pisando)
             {
+                audioPlayer.clip = audioSaltar;
+                audioPlayer.Play();
                 jump = true;
                 doubleJump = true;
             }
             else if (doubleJump) {
+                audioPlayer.clip = audioSaltarDoble;
+                audioPlayer.Play();
                 jump = true;
                 doubleJump = false;
             }
+
         }
         if (jump) {
             rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -141,6 +171,8 @@ public class player : MonoBehaviour
         if(collider.gameObject.tag == "HP" && barraVida.GetComponent<BarraVida>().vida != 100){
             barraVida.SendMessage("resetVida");
             Destroy(collider.gameObject);
+            Invoke("movimientoActivado", 0.7f);
+            sp.color = Color.green;
         }
     }
 
