@@ -161,7 +161,7 @@ public class player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && attack) 
         {
             Destroy(collision.gameObject, 0.7f);
-            collision.gameObject.SendMessage("estadoMuerte", true);
+            collision.gameObject.SendMessage("estadoMuerte");
         }
     }
 

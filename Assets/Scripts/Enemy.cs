@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     private bool death = false;
     private bool attack;
     private Collider2D collider;
+    private SpriteRenderer sp;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
         }
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -77,9 +79,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void estadoMuerte(bool estado){
-        death = estado;
+    public void estadoMuerte(){
+        death = true;
         collider.enabled = false;
+        sp.color = Color.red;
 
     }
     public void atacarFalso() {

@@ -12,12 +12,10 @@ public class Mushroom : MonoBehaviour
     public GameObject izquierda;
     public GameObject derecha;
     private bool attack = true;
-
     private float fireRate;
     private float nextFire;
-
-
-
+    private SpriteRenderer sp;
+    private Collider2D collider;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -26,8 +24,8 @@ public class Mushroom : MonoBehaviour
         animator = GetComponent<Animator>();
         fireRate = 1.88f;
         nextFire = Time.time;
-
-        
+        sp = GetComponent<SpriteRenderer>();
+        collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -60,12 +58,17 @@ public class Mushroom : MonoBehaviour
         }
     }
 
-        private void OnTriggerEnter2D(Collider2D collider){
-            if(collider.gameObject.tag == "Player"){
-                collider.SendMessage("atacado", transform.position.x);
-            }
-            
+    private void OnTriggerEnter2D(Collider2D collider){
+        if(collider.gameObject.tag == "Player"){
+            collider.SendMessage("atacado", transform.position.x);
         }
+            
+    }
+
+    public void estadoMuerte(){
+        sp.color = Color.red;
+        collider.enabled = false;
+    }
         
 
 }
