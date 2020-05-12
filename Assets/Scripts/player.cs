@@ -23,6 +23,11 @@ public class player : MonoBehaviour
     public AudioClip audioCaminar;
     public AudioClip audioSaltar;
     public AudioClip audioSaltarDoble;
+    public AudioClip audioAtacar;
+    public AudioClip audioAtacado;
+    public AudioClip audioMorir;
+    public AudioClip audioVida;
+    public AudioClip audioWilhelm;
     public bool isMoving=false;
 
 
@@ -72,10 +77,10 @@ public class player : MonoBehaviour
 
         if (isMoving && pisando)
         {
-            audioPlayer.clip = audioCaminar;
+            //audioPlayer.clip = audioCaminar;
             if (!audioPlayer.isPlaying)
             {
-               audioPlayer.Play();
+                audioPlayer.PlayOneShot(audioCaminar);
             }
         }
 
@@ -94,14 +99,14 @@ public class player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (pisando)
             {
-                audioPlayer.clip = audioSaltar;
-                audioPlayer.Play();
+                //audioPlayer.clip = audioSaltar;
+                audioPlayer.PlayOneShot(audioSaltar);
                 jump = true;
                 doubleJump = true;
             }
             else if (doubleJump) {
-                audioPlayer.clip = audioSaltarDoble;
-                audioPlayer.Play();
+                //audioPlayer.clip = audioSaltarDoble;
+                audioPlayer.PlayOneShot(audioSaltarDoble);
                 jump = true;
                 doubleJump = false;
             }
@@ -116,6 +121,8 @@ public class player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return)){
             attack = true;
             collider.enabled = false;
+            //audioPlayer.clip = audioAtacar;
+            audioPlayer.PlayOneShot(audioAtacar);
             //StartCoroutine(enableCollider());
             StartCoroutine(waitForSec(0.6f));
         }
@@ -152,7 +159,7 @@ public class player : MonoBehaviour
     }
     private void OnBecameInvisible()
     {
-        
+        audioPlayer.PlayOneShot(audioWilhelm);
         barraVida.SendMessage("bajaVida", 100);
     }
 
@@ -171,6 +178,7 @@ public class player : MonoBehaviour
         }
         if(collider.gameObject.tag == "HP" && barraVida.GetComponent<BarraVida>().vida != 100){
             barraVida.SendMessage("resetVida");
+            audioPlayer.PlayOneShot(audioVida   );
             Destroy(collider.gameObject);
             Invoke("movimientoActivado", 0.7f);
             sp.color = Color.green;
@@ -184,11 +192,15 @@ public class player : MonoBehaviour
             float lado = Mathf.Sign(posEnemigo - transform.position.x);
             rb.AddForce(Vector2.left * lado * JumpForce, ForceMode2D.Impulse);
             movimiento = false;
+            //audioPlayer.clip = audioAtacado;
+            audioPlayer.PlayOneShot(audioAtacado);
             Invoke("movimientoActivado", 0.7f);
             sp.color = Color.red;
         }
         if (barraVida.GetComponent<Transform>().Find("Vida").localScale.x==0f)
         {
+            //audioPlayer.clip = audioMorir;
+            audioPlayer.PlayOneShot(audioMorir);
             vida = false;
             speed = 0;
             jump = false;

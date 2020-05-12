@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     private bool attack;
     private Collider2D collider;
     private SpriteRenderer sp;
+    private AudioSource audioEnemigo;
+    public AudioClip audioAtacar;
+    public AudioClip audioMorir;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,7 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
         sp = GetComponent<SpriteRenderer>();
+        audioEnemigo = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,6 +76,7 @@ public class Enemy : MonoBehaviour
             {
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             }
+            audioEnemigo.PlayOneShot(audioAtacar);
             //Destroy(collider.gameObject);
             collider.SendMessage("atacado", transform.position.x);
             attack = true;
@@ -81,6 +86,7 @@ public class Enemy : MonoBehaviour
 
     public void estadoMuerte(){
         death = true;
+        audioEnemigo.PlayOneShot(audioMorir);
         collider.enabled = false;
         sp.color = Color.red;
 
