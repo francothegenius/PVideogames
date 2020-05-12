@@ -11,8 +11,9 @@ public class Enemy : MonoBehaviour
     public float velocidad;
     private Vector3 inicio, fin;
     private Animator animator;
-    private bool death;
+    private bool death = false;
     private bool attack;
+    private Collider2D collider;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
             fin = objetivo.position;
         }
         animator = GetComponent<Animator>();
+        collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -75,6 +77,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void estadoMuerte(bool estado){
+        death = estado;
+        collider.enabled = false;
+
+    }
     public void atacarFalso() {
         attack = false;
     }

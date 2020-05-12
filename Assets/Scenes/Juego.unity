@@ -6559,6 +6559,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 678359936}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 675151290496858385, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
       propertyPath: velocidad
