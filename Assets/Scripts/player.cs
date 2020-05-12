@@ -139,6 +139,7 @@ public class player : MonoBehaviour
             jump = true;
             speed = 28f;
             JumpForce = 8f;
+            Control.instance.resetGame();
         }
 
     }
@@ -161,6 +162,7 @@ public class player : MonoBehaviour
     {
         audioPlayer.PlayOneShot(audioWilhelm);
         barraVida.SendMessage("bajaVida", 100);
+        Control.instance.Lose();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -201,6 +203,7 @@ public class player : MonoBehaviour
         {
             //audioPlayer.clip = audioMorir;
             audioPlayer.PlayOneShot(audioMorir);
+            Control.instance.Lose();
             vida = false;
             speed = 0;
             jump = false;
