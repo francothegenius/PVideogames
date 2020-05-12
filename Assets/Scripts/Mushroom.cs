@@ -17,6 +17,8 @@ public class Mushroom : MonoBehaviour
     private SpriteRenderer sp;
     private Collider2D collider;
     private Animator animator;
+    private AudioSource audioM;
+    public AudioClip audioMorir;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class Mushroom : MonoBehaviour
         nextFire = Time.time;
         sp = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
+        audioM = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -66,6 +69,7 @@ public class Mushroom : MonoBehaviour
     }
 
     public void estadoMuerte(){
+        audioM.PlayOneShot(audioMorir);
         sp.color = Color.red;
         collider.enabled = false;
     }

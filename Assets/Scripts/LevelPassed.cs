@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class LevelPassed : MonoBehaviour
 {
+    private AudioSource audioLevel;
+    public AudioClip audioGoal;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioLevel = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,7 +23,9 @@ public class LevelPassed : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
+            audioLevel.PlayOneShot(audioGoal);
             Control.instance.Win();
+
         }
         //Debug.Log("Entro");
     }

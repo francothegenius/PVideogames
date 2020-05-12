@@ -8,10 +8,13 @@ public class CheckpointController : MonoBehaviour
     public Sprite greenCheck;
     private SpriteRenderer checkpointRenderer;
     public bool checkReach;
+    private AudioSource audioCP;
+    public AudioClip audioCheck;
     // Start is called before the first frame update
     void Start()
     {
         checkpointRenderer = GetComponent<SpriteRenderer>();
+        audioCP = GetComponent<AudioSource>();
 
     }
 
@@ -25,6 +28,7 @@ public class CheckpointController : MonoBehaviour
         if(collider.tag == "Player"){
             checkpointRenderer.sprite = greenCheck;
             checkReach = true;
+            audioCP.PlayOneShot(audioCheck);
         }
         //Debug.Log("Entro");
     }

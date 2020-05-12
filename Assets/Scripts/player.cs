@@ -180,7 +180,7 @@ public class player : MonoBehaviour
         }
         if(collider.gameObject.tag == "HP" && barraVida.GetComponent<BarraVida>().vida != 100){
             barraVida.SendMessage("resetVida");
-            audioPlayer.PlayOneShot(audioVida   );
+            audioPlayer.PlayOneShot(audioVida);
             Destroy(collider.gameObject);
             Invoke("movimientoActivado", 0.7f);
             sp.color = Color.green;
