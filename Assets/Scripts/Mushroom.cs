@@ -12,6 +12,7 @@ public class Mushroom : MonoBehaviour
     public GameObject izquierda;
     public GameObject derecha;
     private bool attack = true;
+    private bool death = false;
     private float fireRate;
     private float nextFire;
     private SpriteRenderer sp;
@@ -34,11 +35,11 @@ public class Mushroom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //animations
         animator.SetBool("attack",attack);
+        animator.SetBool("death",death);
+
         shoot();
-        
-
-
         if(transform.position.x > player.transform.position.x){
             transform.localScale = new Vector3(-0.64f, 0.55f, 0f);
             reference = izquierda.transform;
@@ -69,6 +70,8 @@ public class Mushroom : MonoBehaviour
     }
 
     public void estadoMuerte(){
+        death = true;
+        attack = false;
         audioM.PlayOneShot(audioMorir);
         sp.color = Color.red;
         collider.enabled = false;
