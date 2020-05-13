@@ -33,6 +33,8 @@ public class player : MonoBehaviour
     public AudioClip audioMorir;
     public AudioClip audioVida;
     public AudioClip audioWilhelm;
+    public AudioClip audioDisparar;
+    public AudioClip audioArco;
     public bool isMoving=false;
 
 
@@ -216,6 +218,7 @@ public class player : MonoBehaviour
             //sonido nueva arma
             attack2enabled = true;
             Destroy(collider.gameObject);
+            audioPlayer.PlayOneShot(audioArco);
         }
         if(collider.gameObject.tag == "limite"){
             audioPlayer.PlayOneShot(audioWilhelm);
@@ -266,6 +269,7 @@ public class player : MonoBehaviour
         GameObject flecha = Instantiate(flechaPrefab, referenceFlecha.position, referenceFlecha.rotation);
         Rigidbody2D rb = flecha.GetComponent<Rigidbody2D>();
         rb.AddForce(referenceFlecha.up * fuerzaFlecha, ForceMode2D.Impulse);
+        audioPlayer.PlayOneShot(audioDisparar);
         Destroy(flecha, 2f);
     }
 

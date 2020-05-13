@@ -7215,6 +7215,8 @@ MonoBehaviour:
   audioMorir: {fileID: 8300000, guid: a54adcf7c70dcee469fe2be45d52e1fb, type: 3}
   audioVida: {fileID: 8300000, guid: fbdca62fc0ce7734da338fd35c97d449, type: 3}
   audioWilhelm: {fileID: 8300000, guid: 14ccfc29a44d3b34ea98d5313e77d17e, type: 3}
+  audioDisparar: {fileID: 8300000, guid: e9bbe2d82341f14429fea526bee79cc8, type: 3}
+  audioArco: {fileID: 8300000, guid: d73e6bd1294a55f46b42093cbd846ab8, type: 3}
   isMoving: 0
 --- !u!82 &1035808426
 AudioSource:
