@@ -14,6 +14,7 @@ TagManager:
   - checkpoint
   - HP
   - arco
+  - limite
   layers:
   - Default
   - TransparentFX

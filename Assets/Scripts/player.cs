@@ -137,7 +137,6 @@ public class player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return)){
             //ataque secundario
             if(attack2enabled){
-                attack2 = true;
                 shootFlecha();
                 StartCoroutine(desactivarAtaqueSec(0.6f));
             }
@@ -168,7 +167,7 @@ public class player : MonoBehaviour
     //metodo utilizado para activar collider despues de ataque
     //es necesitado ya que el ataque es cercano a enemigo
     //y si no se desactiva collider de jugador, muere al ser colisionado con enemigo
-     private IEnumerator enableCollider(float sec){
+    private IEnumerator enableCollider(float sec){
         yield return new WaitForSeconds(sec);
         collider.enabled = true;
         attack = false;
@@ -180,12 +179,14 @@ public class player : MonoBehaviour
         attack2 = false;
     }
     //cuando personaje desaparece de la escena(se cae)
+    /*
     private void OnBecameInvisible()
     {
         audioPlayer.PlayOneShot(audioWilhelm);
         barraVida.SendMessage("bajaVida", 100);
         Control.instance.Lose();
     }
+    */
 
     //cuando colisiona con el enemigo
     private void OnCollisionEnter2D(Collision2D collision)
@@ -212,9 +213,14 @@ public class player : MonoBehaviour
             sp.color = Color.green;
         }
         if(collider.gameObject.tag == "arco"){
-            //falta eliminar objeto arco
             //sonido nueva arma
             attack2enabled = true;
+            Destroy(collider.gameObject);
+        }
+        if(collider.gameObject.tag == "limite"){
+            audioPlayer.PlayOneShot(audioWilhelm);
+            barraVida.SendMessage("bajaVida", 100);
+            Control.instance.Lose();
         }
     }
 
@@ -256,6 +262,7 @@ public class player : MonoBehaviour
     //ataque secundario
     void shootFlecha()
     {
+        attack2 = true;
         GameObject flecha = Instantiate(flechaPrefab, referenceFlecha.position, referenceFlecha.rotation);
         Rigidbody2D rb = flecha.GetComponent<Rigidbody2D>();
         rb.AddForce(referenceFlecha.up * fuerzaFlecha, ForceMode2D.Impulse);
