@@ -17,6 +17,8 @@ public class player : MonoBehaviour
     private bool vida;
     private GameObject barraVida;
     private bool attack;
+    private bool attack2;
+    private bool attack2enabled;
     private Collider2D collider;
     private Vector3 respawn;
     private AudioSource audioPlayer;
@@ -47,26 +49,32 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //asignacion velocidad maxima para evitar que el personaje
+        //acumule velocidad
         Vector3 nuevaVelocidad = rb.velocity;
         nuevaVelocidad.x *= 0.75f;
         if (pisando)
         {
             rb.velocity = nuevaVelocidad;
         }
+        //animators
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         animator.SetBool("Pisando", pisando);
         animator.SetBool("attack", attack);
+        animator.SetBool("attack_sec", attack2);
         animator.SetBool("vida", vida);
+
+
+        //moviemiento personaje
         float h = Input.GetAxis("Horizontal");
         if (!movimiento)
         {
             h = 0;
         }
         rb.AddForce(Vector2.right * speed * h);
-        // Debug.Log(rb.velocity.x);
         float limitSpeed = Mathf.Clamp(rb.velocity.x,-maxSpeed,maxSpeed);
         rb.velocity = new Vector2(limitSpeed, rb.velocity.y);
-        //Debug.Log(rb.velocity.);
+    
         if (h!= 0)
         {
             isMoving = true;
@@ -75,6 +83,7 @@ public class player : MonoBehaviour
             isMoving = false;
         }
 
+        //audio pasos
         if (isMoving && pisando)
         {
             //audioPlayer.clip = audioCaminar;
@@ -84,6 +93,7 @@ public class player : MonoBehaviour
             }
         }
 
+        //mover personaje segun dirección
         if (h>0.1f) {
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         }
@@ -92,6 +102,7 @@ public class player : MonoBehaviour
             transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
         }
 
+        //brincar
         if (pisando) {
             doubleJump = true;
         }
@@ -118,19 +129,24 @@ public class player : MonoBehaviour
             jump = false;
         }
 
+        //ataque
         if(Input.GetKeyDown(KeyCode.Return)){
+            //ataque secundario
+            if(attack2enabled){
+                attack2 = true;
+                StartCoroutine(desactivarAtaqueSec(0.6f));
+            }
+            //ataque primario
+            else{
             attack = true;
             collider.enabled = false;
-            //audioPlayer.clip = audioAtacar;
             audioPlayer.PlayOneShot(audioAtacar);
-            //StartCoroutine(enableCollider());
-            StartCoroutine(waitForSec(0.6f));
+            StartCoroutine(enableCollider(0.6f));
+            }
+
         }
-        if(Input.GetKeyUp(KeyCode.Return)){
-            //collider.enabled = true;
-            //attack = false;       
-            StopCoroutine(enableCollider()); 
-        }
+
+        //respawn
         if (Input.GetKeyDown(KeyCode.R))
         {
             transform.position = respawn;
@@ -144,20 +160,21 @@ public class player : MonoBehaviour
 
     }
 
-    private IEnumerator enableCollider(){
-        while(attack){
-            collider.enabled = false;
-            yield return null;
-        }
-    }
-
-    //codigo de prueba
-     private IEnumerator waitForSec(float sec){
+    //metodo utilizado para activar collider despues de ataque
+    //es necesitado ya que el ataque es cercano a enemigo
+    //y si no se desactiva collider de jugador, muere al ser colisionado con enemigo
+     private IEnumerator enableCollider(float sec){
         yield return new WaitForSeconds(sec);
         collider.enabled = true;
         attack = false;
- 
     }
+
+    //desactivar ataque secundario
+    private IEnumerator desactivarAtaqueSec(float sec){
+        yield return new WaitForSeconds(sec);
+        attack2 = false;
+    }
+    //cuando personaje desaparece de la escena(se cae)
     private void OnBecameInvisible()
     {
         audioPlayer.PlayOneShot(audioWilhelm);
@@ -165,6 +182,7 @@ public class player : MonoBehaviour
         Control.instance.Lose();
     }
 
+    //cuando colisiona con el enemigo
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && attack) 
@@ -174,6 +192,8 @@ public class player : MonoBehaviour
         }
     }
 
+    //checkpoint
+    //HP
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag == "checkpoint"){
             respawn = collider.transform.position;
@@ -185,8 +205,16 @@ public class player : MonoBehaviour
             Invoke("movimientoActivado", 0.7f);
             sp.color = Color.green;
         }
+        if(collider.gameObject.tag == "arco"){
+            //falta eliminar objeto arco
+            //sonido nueva arma
+            attack2enabled = true;
+        }
     }
 
+    //metodo llamado desde enemigo
+    //baja vida
+    //acciona al ser atacado
     public void atacado(float posEnemigo) {
         if(barraVida.GetComponent<Transform>().Find("Vida").localScale.x>0f){
             barraVida.SendMessage("bajaVida", 15);
@@ -212,6 +240,7 @@ public class player : MonoBehaviour
 
     }
 
+    //activar movimiento al jugador despues de ser atacado y regresa a color original
     public void movimientoActivado() {
         movimiento = true;
         sp.color = Color.white;

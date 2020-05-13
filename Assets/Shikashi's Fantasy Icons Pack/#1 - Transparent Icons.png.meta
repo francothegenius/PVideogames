@@ -1688,6 +1688,12 @@ TextureImporter:
   - first:
       213: 972662497946391565
     second: '#1 - Transparent Icons_280'
+  - first:
+      213: -6068236643760676199
+    second: '#1 - Transparent Icons_281'
+  - first:
+      213: 4575428321015257167
+    second: arma_sec
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -3707,7 +3713,7 @@ TextureImporter:
       name: '#1 - Transparent Icons_92'
       rect:
         serializedVersion: 2
-        x: 103
+        x: 104
         y: 419
         width: 7
         height: 26
@@ -7668,6 +7674,48 @@ TextureImporter:
       bones: []
       spriteID: d04507473679f7d00800000000000000
       internalID: 972662497946391565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '#1 - Transparent Icons_281'
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 420
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 992e2a36cea49cba0800000000000000
+      internalID: -6068236643760676199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arma_sec
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 419
+        width: 22
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f485069f0df2f7f30800000000000000
+      internalID: 4575428321015257167
       vertices: []
       indices: 
       edges: []

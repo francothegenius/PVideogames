@@ -13,6 +13,7 @@ TagManager:
   - mushIzquierda
   - checkpoint
   - HP
+  - arco
   layers:
   - Default
   - TransparentFX
