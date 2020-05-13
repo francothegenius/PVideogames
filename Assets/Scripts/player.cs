@@ -19,6 +19,9 @@ public class player : MonoBehaviour
     private bool attack;
     private bool attack2;
     private bool attack2enabled;
+    public GameObject flechaPrefab;
+    public Transform referenceFlecha;
+    public float fuerzaFlecha;
     private Collider2D collider;
     private Vector3 respawn;
     private AudioSource audioPlayer;
@@ -44,6 +47,7 @@ public class player : MonoBehaviour
         barraVida = GameObject.Find("BarraVida");
         vida = true;
         audioPlayer = GetComponent<AudioSource>();
+        fuerzaFlecha = 12f;
     }
 
     // Update is called once per frame
@@ -134,6 +138,7 @@ public class player : MonoBehaviour
             //ataque secundario
             if(attack2enabled){
                 attack2 = true;
+                shootFlecha();
                 StartCoroutine(desactivarAtaqueSec(0.6f));
             }
             //ataque primario
@@ -194,6 +199,7 @@ public class player : MonoBehaviour
 
     //checkpoint
     //HP
+    //arco
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag == "checkpoint"){
             respawn = collider.transform.position;
@@ -244,6 +250,16 @@ public class player : MonoBehaviour
     public void movimientoActivado() {
         movimiento = true;
         sp.color = Color.white;
+    }
+
+    //disparo de flechas
+    //ataque secundario
+    void shootFlecha()
+    {
+        GameObject flecha = Instantiate(flechaPrefab, referenceFlecha.position, referenceFlecha.rotation);
+        Rigidbody2D rb = flecha.GetComponent<Rigidbody2D>();
+        rb.AddForce(referenceFlecha.up * fuerzaFlecha, ForceMode2D.Impulse);
+        Destroy(flecha, 2f);
     }
 
 }

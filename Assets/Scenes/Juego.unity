@@ -4503,6 +4503,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 475814969}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &657865432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 657865433}
+  m_Layer: 0
+  m_Name: referenceDisparo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &657865433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657865432}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.36, y: 0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1035808422}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1001 &664559339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7063,10 +7093,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035808419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.47, y: -1.07, z: 0}
+  m_LocalPosition: {x: -2, y: -1.07, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 38815807}
+  - {fileID: 657865433}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7123,6 +7154,10 @@ MonoBehaviour:
   speed: 28
   pisando: 0
   JumpForce: 8
+  flechaPrefab: {fileID: 4856197025227363113, guid: a8ed0bdc2b53546eaa42e20e038cba8a,
+    type: 3}
+  referenceFlecha: {fileID: 657865433}
+  fuerzaFlecha: 0
   audioCaminar: {fileID: 8300000, guid: 65d60f3a31e48674eaf9129988dedcac, type: 3}
   audioSaltar: {fileID: 8300000, guid: 35561df9d40ce6c48b139abc1b6dfa73, type: 3}
   audioSaltarDoble: {fileID: 8300000, guid: 6f06e396dbe8df840bdf489a512c9f4c, type: 3}
@@ -7242,7 +7277,7 @@ GameObject:
   - component: {fileID: 1043703417}
   - component: {fileID: 1043703418}
   m_Layer: 0
-  m_Name: '#1 - Transparent Icons_54'
+  m_Name: meta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
