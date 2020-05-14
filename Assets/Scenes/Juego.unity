@@ -9901,12 +9901,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1422284340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fe59a836c2a3f469ef0f046a695b79, type: 3}
+  m_Script: {fileID: 11500000, guid: 504e5ae12c02947a6a2dee4acbcb9cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barraVida: {fileID: 1903857457}
-  vida: 0
-  maxVida: 100
+  barra: {fileID: 1903857457}
+  progreso: 0
+  maxProgreso: 100
 --- !u!114 &1422284343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11209,7 +11209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.91081274, g: 0.9339623, b: 0.20705767, a: 1}
+  m_Color: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

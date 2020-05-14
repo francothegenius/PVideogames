@@ -16,6 +16,7 @@ public class player : MonoBehaviour
     private SpriteRenderer sp;
     private bool vida;
     private GameObject barraVida;
+    private GameObject barraCombo;
     private bool attack;
     private bool attack2;
     private bool attack2enabled;
@@ -47,6 +48,7 @@ public class player : MonoBehaviour
         collider = GetComponent<Collider2D>();
         sp = GetComponent<SpriteRenderer>();
         barraVida = GameObject.Find("BarraVida");
+        barraCombo = GameObject.Find("Combo");
         vida = true;
         audioPlayer = GetComponent<AudioSource>();
         fuerzaFlecha = 12f;
@@ -193,10 +195,11 @@ public class player : MonoBehaviour
     //cuando colisiona con el enemigo
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && attack) 
+        if (collision.gameObject.tag == "Enemy" && attack)
         {
             Destroy(collision.gameObject, 0.7f);
             collision.gameObject.SendMessage("estadoMuerte");
+            barraCombo.SendMessage("subirProgreso", 25);
         }
     }
 
@@ -233,6 +236,7 @@ public class player : MonoBehaviour
     public void atacado(float posEnemigo) {
         if(barraVida.GetComponent<Transform>().Find("Vida").localScale.x>0f){
             barraVida.SendMessage("bajaVida", 15);
+            barraCombo.SendMessage("resetBarraprogeso");
             jump = true;
             float lado = Mathf.Sign(posEnemigo - transform.position.x);
             rb.AddForce(Vector2.left * lado * JumpForce, ForceMode2D.Impulse);

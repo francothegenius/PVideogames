@@ -16,7 +16,15 @@ public class ComboAttack : MonoBehaviour
 
     public void subirProgreso(float cantidad) 
     {
+        barra.GetComponent<Image>().color = new Color32(232, 238, 53, 255);
         progreso = Mathf.Clamp(progreso+cantidad,0f, maxProgreso);
-        barra.transform.localScale = new Vector2(vida/maxVida, 1);
+        barra.transform.localScale = new Vector2(progreso/maxProgreso, 1);
+    }
+
+    public void resetBarraprogeso()
+    {
+        barra.GetComponent<Image>().color = new Color32(149,149, 149, 255);
+        progreso = 0f;
+        barra.transform.localScale = new Vector2(1, 1);
     }
 }
