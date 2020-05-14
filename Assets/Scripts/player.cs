@@ -145,7 +145,7 @@ public class player : MonoBehaviour
                 StartCoroutine(desactivarAtaqueSec(0.6f));
             }
             //ataque primario
-            else{
+            else if(vida){
             attack = true;
             collider.enabled = false;
             audioPlayer.PlayOneShot(audioAtacar);
@@ -182,15 +182,7 @@ public class player : MonoBehaviour
         yield return new WaitForSeconds(sec);
         attack2 = false;
     }
-    //cuando personaje desaparece de la escena(se cae)
-    /*
-    private void OnBecameInvisible()
-    {
-        audioPlayer.PlayOneShot(audioWilhelm);
-        barraVida.SendMessage("bajaVida", 100);
-        Control.instance.Lose();
-    }
-    */
+
 
     //cuando colisiona con el enemigo
     private void OnCollisionEnter2D(Collision2D collision)
@@ -206,6 +198,7 @@ public class player : MonoBehaviour
     //checkpoint
     //HP
     //arco
+    //limite cuando cae
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag == "checkpoint"){
             respawn = collider.transform.position;
@@ -226,6 +219,7 @@ public class player : MonoBehaviour
         if(collider.gameObject.tag == "limite"){
             audioPlayer.PlayOneShot(audioWilhelm);
             barraVida.SendMessage("bajaVida", 100);
+            barraCombo.SendMessage("resetBarraProgeso");
             Control.instance.Lose();
         }
     }
@@ -236,7 +230,7 @@ public class player : MonoBehaviour
     public void atacado(float posEnemigo) {
         if(barraVida.GetComponent<Transform>().Find("Vida").localScale.x>0f){
             barraVida.SendMessage("bajaVida", 15);
-            barraCombo.SendMessage("resetBarraprogeso");
+            barraCombo.SendMessage("resetBarraProgeso");
             jump = true;
             float lado = Mathf.Sign(posEnemigo - transform.position.x);
             rb.AddForce(Vector2.left * lado * JumpForce, ForceMode2D.Impulse);
@@ -255,6 +249,9 @@ public class player : MonoBehaviour
             speed = 0;
             jump = false;
             JumpForce = 0;
+            attack2enabled = false;
+            barraCombo.SendMessage("resetBarraProgeso");
+
         }
 
     }
