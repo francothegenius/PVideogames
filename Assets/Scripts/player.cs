@@ -38,6 +38,8 @@ public class player : MonoBehaviour
     public AudioClip audioArco;
     public bool isMoving=false;
 
+    private GameObject control;
+
 
     
     // Start is called before the first frame update
@@ -52,6 +54,7 @@ public class player : MonoBehaviour
         vida = true;
         audioPlayer = GetComponent<AudioSource>();
         fuerzaFlecha = 12f;
+        control = GameObject.Find("Control");
     }
 
     // Update is called once per frame
@@ -142,7 +145,7 @@ public class player : MonoBehaviour
             //ataque secundario
             if(attack2enabled){
                 shootFlecha();
-                StartCoroutine(desactivarAtaqueSec(0.6f));
+                StartCoroutine(desactivarAtaqueSec(0.3f));
             }
             //ataque primario
             else if(vida){
@@ -150,6 +153,15 @@ public class player : MonoBehaviour
             collider.enabled = false;
             audioPlayer.PlayOneShot(audioAtacar);
             StartCoroutine(enableCollider(0.6f));
+            }
+
+        }
+
+        //combo attack
+        if(Input.GetKeyDown(KeyCode.F)){
+            if(barraCombo.GetComponent<ComboAttack>().progreso == 100){
+                control.GetComponent<Control>().comboText.SetActive(false);
+                control.SendMessage("StopBlinking");
             }
 
         }
@@ -210,8 +222,7 @@ public class player : MonoBehaviour
             Invoke("movimientoActivado", 0.7f);
             sp.color = Color.green;
         }
-        if(collider.gameObject.tag == "arco"){
-            //sonido nueva arma
+        if(collider.gameObject.tag == "arco"){  
             attack2enabled = true;
             Destroy(collider.gameObject);
             audioPlayer.PlayOneShot(audioArco);
