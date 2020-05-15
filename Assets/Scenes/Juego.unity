@@ -2993,6 +2993,7 @@ RectTransform:
   - {fileID: 1328724518}
   - {fileID: 1145253611}
   - {fileID: 1609343367}
+  - {fileID: 1178242475}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7339,6 +7340,7 @@ MonoBehaviour:
   audioDisparar: {fileID: 8300000, guid: e9bbe2d82341f14429fea526bee79cc8, type: 3}
   audioArco: {fileID: 8300000, guid: d73e6bd1294a55f46b42093cbd846ab8, type: 3}
   audioCombo: {fileID: 8300000, guid: 0cbed612a68d43842a02db11e50aa796, type: 3}
+  comboActivated: {fileID: 8300000, guid: a513376f718e7334098fbc3e37f73566, type: 3}
   isMoving: 0
   audioCaminarRoca: {fileID: 0}
 --- !u!82 &1035808426
@@ -8937,6 +8939,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176201441}
   m_CullTransparentMesh: 0
+--- !u!1 &1178242472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178242475}
+  - component: {fileID: 1178242474}
+  - component: {fileID: 1178242473}
+  m_Layer: 5
+  m_Name: ComboActivated
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1178242473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178242472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.0047169924, b: 0.0047169924, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_FontSize: 70
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 70
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Combo Activated!
+--- !u!222 &1178242474
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178242472}
+  m_CullTransparentMesh: 0
+--- !u!224 &1178242475
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178242472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 405149032}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 104.05, y: -32}
+  m_SizeDelta: {x: 609.6, y: 93.9}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1186771236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2189719266491153071, guid: 4dfb2181f47e54b449abe67ba13a02e2,
@@ -9666,6 +9745,7 @@ MonoBehaviour:
   loseText: {fileID: 1145253610}
   continueText: {fileID: 1609343364}
   comboText: {fileID: 1176201441}
+  comboActivated: {fileID: 1178242472}
 --- !u!4 &1298547636
 Transform:
   m_ObjectHideFlags: 0
@@ -10066,7 +10146,7 @@ GameObject:
   - component: {fileID: 1422284342}
   - component: {fileID: 1422284345}
   m_Layer: 5
-  m_Name: Combo
+  m_Name: ComboBarra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

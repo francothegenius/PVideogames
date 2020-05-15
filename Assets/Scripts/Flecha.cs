@@ -8,7 +8,7 @@ public class Flecha : MonoBehaviour
 
     private void Start()
     {
-        barraCombo = GameObject.Find("Combo");
+        barraCombo = GameObject.Find("ComboBarra");
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

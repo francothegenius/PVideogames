@@ -11,8 +11,8 @@ public class Control : MonoBehaviour
     public GameObject loseText;
     public GameObject continueText;
     public static Control instance = null;
-
     public GameObject comboText;
+    public GameObject comboActivated;
     private Text text;
     private GameObject barraCombo;
     private bool oneTime = false;
@@ -20,7 +20,7 @@ public class Control : MonoBehaviour
     void Start(){
 
         text = comboText.GetComponent<Text>();
-        barraCombo = GameObject.Find("Combo");
+        barraCombo = GameObject.Find("ComboBarra");
     }
 
     void Update(){
@@ -105,4 +105,9 @@ public class Control : MonoBehaviour
         StopCoroutine("Blink");
     }
 
+    private IEnumerator comboActivatedText(){
+        comboActivated.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        comboActivated.SetActive(false);
+    }
 }

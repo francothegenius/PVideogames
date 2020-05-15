@@ -38,8 +38,9 @@ public class player : MonoBehaviour
     public AudioClip audioDisparar;
     public AudioClip audioArco;
     public AudioClip audioCombo;
-    public bool isMoving=false;
+    public AudioClip comboActivated;
 
+    public bool isMoving=false;
     private GameObject control;
     public AudioClip audioCaminarRoca;
 
@@ -53,7 +54,7 @@ public class player : MonoBehaviour
         collider = GetComponent<Collider2D>();
         sp = GetComponent<SpriteRenderer>();
         barraVida = GameObject.Find("BarraVida");
-        barraCombo = GameObject.Find("Combo");
+        barraCombo = GameObject.Find("ComboBarra");
         vida = true;
         audioPlayer = GetComponent<AudioSource>();
         fuerzaFlecha = 12f;
@@ -165,9 +166,11 @@ public class player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F)){
             if(barraCombo.GetComponent<ComboAttack>().progreso == 100){
                 //texto
+                audioPlayer.PlayOneShot(comboActivated);
                 control.GetComponent<Control>().comboText.SetActive(false);
                 control.SendMessage("StopBlinking");
                 barraCombo.SendMessage("resetBarraProgeso");
+                control.SendMessage("comboActivatedText");
                 comboAttack1 = true;
                 collider.enabled = false;
                 StartCoroutine(enableCollider(3.2f));
