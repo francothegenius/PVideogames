@@ -20,6 +20,7 @@ public class player : MonoBehaviour
     private bool attack;
     private bool attack2;
     private bool attack2enabled;
+    private bool comboAttack1;
     public GameObject flechaPrefab;
     public Transform referenceFlecha;
     public float fuerzaFlecha;
@@ -74,6 +75,7 @@ public class player : MonoBehaviour
         animator.SetBool("attack", attack);
         animator.SetBool("attack_sec", attack2);
         animator.SetBool("vida", vida);
+        animator.SetBool("combo_attack_1", comboAttack1);
 
 
         //moviemiento personaje
@@ -160,8 +162,13 @@ public class player : MonoBehaviour
         //combo attack
         if(Input.GetKeyDown(KeyCode.F)){
             if(barraCombo.GetComponent<ComboAttack>().progreso == 100){
+                //texto
                 control.GetComponent<Control>().comboText.SetActive(false);
                 control.SendMessage("StopBlinking");
+                barraCombo.SendMessage("resetBarraProgeso");
+                comboAttack1 = true;
+                collider.enabled = false;
+                StartCoroutine(enableCollider(6f));
             }
 
         }
@@ -187,6 +194,7 @@ public class player : MonoBehaviour
         yield return new WaitForSeconds(sec);
         collider.enabled = true;
         attack = false;
+        comboAttack1 = false;
     }
 
     //desactivar ataque secundario
@@ -199,7 +207,7 @@ public class player : MonoBehaviour
     //cuando colisiona con el enemigo
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && attack)
+        if (collision.gameObject.tag == "Enemy" && (attack || comboAttack1))
         {
             Destroy(collision.gameObject, 0.7f);
             collision.gameObject.SendMessage("estadoMuerte");
