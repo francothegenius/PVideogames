@@ -2358,6 +2358,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: rockpyramid
       objectReference: {fileID: 0}
+    - target: {fileID: 3553361595919090323, guid: e121f0ab2a164479fa46770ec58bc2a0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Suelo
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553361595919090324, guid: e121f0ab2a164479fa46770ec58bc2a0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 0fb045eec2a928547893e883ca1fc57a, type: 2}
     - target: {fileID: 3553361595919090325, guid: e121f0ab2a164479fa46770ec58bc2a0,
         type: 3}
       propertyPath: m_LocalPosition.x

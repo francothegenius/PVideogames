@@ -30,7 +30,9 @@ public class Control : MonoBehaviour
                 StartBlinking();
                 oneTime = true;
             }
-
+        }else{
+            comboText.SetActive(false);
+            StopBlinking();
         }
     }
     public void Awake()
@@ -99,6 +101,7 @@ public class Control : MonoBehaviour
         StartCoroutine("Blink");
     }
     void StopBlinking(){
+        oneTime = false;
         StopCoroutine("Blink");
     }
 
