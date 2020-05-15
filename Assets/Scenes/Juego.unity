@@ -7338,7 +7338,9 @@ MonoBehaviour:
   audioWilhelm: {fileID: 8300000, guid: 14ccfc29a44d3b34ea98d5313e77d17e, type: 3}
   audioDisparar: {fileID: 8300000, guid: e9bbe2d82341f14429fea526bee79cc8, type: 3}
   audioArco: {fileID: 8300000, guid: d73e6bd1294a55f46b42093cbd846ab8, type: 3}
+  audioCombo: {fileID: 8300000, guid: 0cbed612a68d43842a02db11e50aa796, type: 3}
   isMoving: 0
+  audioCaminarRoca: {fileID: 0}
 --- !u!82 &1035808426
 AudioSource:
   m_ObjectHideFlags: 0

@@ -37,12 +37,14 @@ public class player : MonoBehaviour
     public AudioClip audioWilhelm;
     public AudioClip audioDisparar;
     public AudioClip audioArco;
+    public AudioClip audioCombo;
     public bool isMoving=false;
 
     private GameObject control;
+    public AudioClip audioCaminarRoca;
 
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -168,7 +170,8 @@ public class player : MonoBehaviour
                 barraCombo.SendMessage("resetBarraProgeso");
                 comboAttack1 = true;
                 collider.enabled = false;
-                StartCoroutine(enableCollider(6f));
+                StartCoroutine(enableCollider(3.2f));
+                audioPlayer.PlayOneShot(audioCombo);
             }
 
         }
