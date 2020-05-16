@@ -18,6 +18,7 @@ public class Control : MonoBehaviour
     private Text text;
     private GameObject barraCombo;
     private bool oneTime = false;
+    //public AudioClip audioButton;
 
     void Start(){
 
