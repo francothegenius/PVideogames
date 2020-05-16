@@ -10,6 +10,8 @@ public class Control : MonoBehaviour
     public GameObject winText;
     public GameObject loseText;
     public GameObject continueText;
+    public GameObject fail;
+    public GameObject tryAgain;
     public static Control instance = null;
     public GameObject comboText;
     public GameObject comboActivated;
@@ -65,7 +67,7 @@ public class Control : MonoBehaviour
     {
         loseText.SetActive(true);
         continueText.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 0.5f;
     }
 
     public void resetTime()
@@ -108,5 +110,13 @@ public class Control : MonoBehaviour
         comboActivated.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         comboActivated.SetActive(false);
+    }
+
+    public void finishGameFail(){
+        loseText.SetActive(false);
+        continueText.SetActive(false);
+        fail.SetActive(true);
+        tryAgain.SetActive(true);
+        Invoke("RegresarMenu", 5f);
     }
 }

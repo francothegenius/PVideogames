@@ -37,6 +37,7 @@ public class player : MonoBehaviour
     public AudioClip audioWilhelm;
     public AudioClip audioDisparar;
     public AudioClip audioArco;
+    public AudioClip audioEspada;
     public AudioClip audioCombo;
     public AudioClip comboActivated;
     public bool pisandoPasto;
@@ -72,9 +73,10 @@ public class player : MonoBehaviour
     {
         if (cor<1)
         {
-            Control.instance.RegresarMenu();
-        }
-        //asignacion velocidad maxima para evitar que el personaje
+            Control.instance.finishGameFail();
+            
+        }else{
+            //asignacion velocidad maxima para evitar que el personaje
         //acumule velocidad
         Vector3 nuevaVelocidad = rb.velocity;
         nuevaVelocidad.x *= 0.75f;
@@ -211,6 +213,7 @@ public class player : MonoBehaviour
             oneTime = true;
         }
 
+        }
     }
 
     //metodo utilizado para activar collider despues de ataque
@@ -244,6 +247,7 @@ public class player : MonoBehaviour
     //checkpoint
     //HP
     //arco
+    //espada
     //limite cuando cae
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag == "checkpoint"){
@@ -255,6 +259,11 @@ public class player : MonoBehaviour
             Destroy(collider.gameObject);
             Invoke("movimientoActivado", 0.7f);
             sp.color = Color.green;
+        }
+        if(collider.gameObject.tag == "espada"){  
+            attack2enabled = false;
+            Destroy(collider.gameObject);
+            audioPlayer.PlayOneShot(audioEspada);
         }
         if(collider.gameObject.tag == "arco"){  
             attack2enabled = true;
