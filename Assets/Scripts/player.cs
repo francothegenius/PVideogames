@@ -48,6 +48,7 @@ public class player : MonoBehaviour
     public GameObject vidas;
     private int cor = 4;
     public bool oneTime = true;
+    private bool canRestart = false;
 
 
 
@@ -74,9 +75,9 @@ public class player : MonoBehaviour
         if (cor<1)
         {
             Control.instance.finishGameFail();
-            
+
         }else{
-            //asignacion velocidad maxima para evitar que el personaje
+        //asignacion velocidad maxima para evitar que el personaje
         //acumule velocidad
         Vector3 nuevaVelocidad = rb.velocity;
         nuevaVelocidad.x *= 0.75f;
@@ -200,7 +201,7 @@ public class player : MonoBehaviour
         }
 
         //respawn
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && canRestart)
         {
             transform.position = respawn;
             barraVida.SendMessage("resetVida");
@@ -211,6 +212,7 @@ public class player : MonoBehaviour
             Control.instance.resetGame();
             Control.instance.resetTime();
             oneTime = true;
+            canRestart = false;
         }
 
         }
@@ -282,6 +284,7 @@ public class player : MonoBehaviour
                 barraCombo.SendMessage("resetBarraProgeso");
                 vidas.SendMessage("cambioCorazones", cor);
                 oneTime = false;
+                canRestart = true;
             }
         }
     }
@@ -302,6 +305,7 @@ public class player : MonoBehaviour
             Invoke("movimientoActivado", 0.7f);
             sp.color = Color.red;
         }
+        //player sin vida (muerto)
         if (barraVida.GetComponent<Transform>().Find("Vida").localScale.x==0f)
         {
             //audioPlayer.clip = audioMorir;
@@ -315,6 +319,7 @@ public class player : MonoBehaviour
             cor--;
             vidas.SendMessage("cambioCorazones", cor);
             barraCombo.SendMessage("resetBarraProgeso");
+            canRestart = true;
 
         }
 
