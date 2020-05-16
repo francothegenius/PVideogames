@@ -144,7 +144,7 @@ public class player : MonoBehaviour
             doubleJump = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && !canRestart) {
             if (pisando)
             {
                 //audioPlayer.clip = audioSaltar;
@@ -167,7 +167,7 @@ public class player : MonoBehaviour
         }
 
         //ataque
-        if(Input.GetKeyDown(KeyCode.Return)){
+        if(Input.GetKeyDown(KeyCode.Return) && !canRestart){
             //ataque secundario
             if(attack2enabled){
                 shootFlecha();
