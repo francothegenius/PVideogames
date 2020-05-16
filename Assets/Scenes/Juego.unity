@@ -7585,6 +7585,8 @@ MonoBehaviour:
   JumpForce: 8
   flechaPrefab: {fileID: 4856197025227363113, guid: a8ed0bdc2b53546eaa42e20e038cba8a,
     type: 3}
+  flechaPrefabCombo: {fileID: 4856197025227363113, guid: b5a38e49bfd3a4ced90c8687056bc69d,
+    type: 3}
   referenceFlecha: {fileID: 657865433}
   referenceFlechaArriba: {fileID: 1073872779}
   referenceFlechaLado: {fileID: 626506138}

@@ -22,6 +22,7 @@ public class player : MonoBehaviour
     private bool attack2enabled;
     private bool comboAttack1;
     public GameObject flechaPrefab;
+    public GameObject flechaPrefabCombo;
     public Transform referenceFlecha;
     public Transform referenceFlechaArriba;
     public Transform referenceFlechaLado;
@@ -192,7 +193,12 @@ public class player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F)){
             if(barraCombo.GetComponent<ComboAttack>().progreso == 100){
                 if(attack2enabled){
-                    StartCoroutine(comboFlecha);
+                    audioPlayer.PlayOneShot(comboActivated);
+                    control.GetComponent<Control>().comboText.SetActive(false);
+                    control.SendMessage("StopBlinking");
+                    barraCombo.SendMessage("resetBarraProgeso");
+                    control.SendMessage("comboActivatedText");
+                    StartCoroutine(activarComboFlecha());
                 }else{
                     audioPlayer.PlayOneShot(comboActivated);
                     control.GetComponent<Control>().comboText.SetActive(false);
@@ -359,9 +365,9 @@ public class player : MonoBehaviour
     {
         while(true){
             attack2 = true;
-            GameObject flecha = Instantiate(flechaPrefab, referenceFlecha.position, referenceFlecha.rotation);
-            GameObject flechaArriba = Instantiate(flechaPrefab, referenceFlechaArriba.position, referenceFlechaArriba.rotation);
-            GameObject flechaLado = Instantiate(flechaPrefab, referenceFlechaLado.position, referenceFlechaLado.rotation);
+            GameObject flecha = Instantiate(flechaPrefabCombo, referenceFlecha.position, referenceFlecha.rotation);
+            GameObject flechaArriba = Instantiate(flechaPrefabCombo, referenceFlechaArriba.position, referenceFlechaArriba.rotation);
+            GameObject flechaLado = Instantiate(flechaPrefabCombo, referenceFlechaLado.position, referenceFlechaLado.rotation);
             Rigidbody2D rbFlecha = flecha.GetComponent<Rigidbody2D>();
             Rigidbody2D rbFlechaArriba = flechaArriba.GetComponent<Rigidbody2D>();
             Rigidbody2D rbFlechaLado = flechaLado.GetComponent<Rigidbody2D>();
@@ -372,8 +378,15 @@ public class player : MonoBehaviour
             Destroy(flecha, 2f);
             Destroy(flechaArriba, 2f);
             Destroy(flechaLado, 2f);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    private IEnumerator activarComboFlecha(){
+        StartCoroutine(comboFlecha);
+        yield return new WaitForSeconds(3f);
+        attack2 = false;
+        StopCoroutine(comboFlecha);
     }
 
 }
