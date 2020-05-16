@@ -23,7 +23,10 @@ public class player : MonoBehaviour
     private bool comboAttack1;
     public GameObject flechaPrefab;
     public Transform referenceFlecha;
+    public Transform referenceFlechaArriba;
+    public Transform referenceFlechaLado;
     public float fuerzaFlecha;
+    private IEnumerator comboFlecha;
     private Collider2D collider;
     private Vector3 respawn;
     private AudioSource audioPlayer;
@@ -52,6 +55,7 @@ public class player : MonoBehaviour
 
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +70,7 @@ public class player : MonoBehaviour
         fuerzaFlecha = 12f;
         control = GameObject.Find("Control");
         vidas = GameObject.Find("Vidas");
+        comboFlecha = shootFlechaCombo();
 
     }
 
@@ -186,16 +191,20 @@ public class player : MonoBehaviour
         //combo attack
         if(Input.GetKeyDown(KeyCode.F)){
             if(barraCombo.GetComponent<ComboAttack>().progreso == 100){
-                //texto
-                audioPlayer.PlayOneShot(comboActivated);
-                control.GetComponent<Control>().comboText.SetActive(false);
-                control.SendMessage("StopBlinking");
-                barraCombo.SendMessage("resetBarraProgeso");
-                control.SendMessage("comboActivatedText");
-                comboAttack1 = true;
-                collider.enabled = false;
-                StartCoroutine(enableCollider(3.2f));
-                audioPlayer.PlayOneShot(audioCombo);
+                if(attack2enabled){
+                    StartCoroutine(comboFlecha);
+                }else{
+                    audioPlayer.PlayOneShot(comboActivated);
+                    control.GetComponent<Control>().comboText.SetActive(false);
+                    control.SendMessage("StopBlinking");
+                    barraCombo.SendMessage("resetBarraProgeso");
+                    control.SendMessage("comboActivatedText");
+                    comboAttack1 = true;
+                    collider.enabled = false;
+                    StartCoroutine(enableCollider(3.2f));
+                    audioPlayer.PlayOneShot(audioCombo);
+                }
+
             }
 
         }
@@ -344,6 +353,27 @@ public class player : MonoBehaviour
         rb.AddForce(referenceFlecha.up * fuerzaFlecha, ForceMode2D.Impulse);
         audioPlayer.PlayOneShot(audioDisparar);
         Destroy(flecha, 2f);
+    }
+
+    private IEnumerator shootFlechaCombo()
+    {
+        while(true){
+            attack2 = true;
+            GameObject flecha = Instantiate(flechaPrefab, referenceFlecha.position, referenceFlecha.rotation);
+            GameObject flechaArriba = Instantiate(flechaPrefab, referenceFlechaArriba.position, referenceFlechaArriba.rotation);
+            GameObject flechaLado = Instantiate(flechaPrefab, referenceFlechaLado.position, referenceFlechaLado.rotation);
+            Rigidbody2D rbFlecha = flecha.GetComponent<Rigidbody2D>();
+            Rigidbody2D rbFlechaArriba = flechaArriba.GetComponent<Rigidbody2D>();
+            Rigidbody2D rbFlechaLado = flechaLado.GetComponent<Rigidbody2D>();
+            rbFlecha.AddForce(referenceFlecha.up * fuerzaFlecha, ForceMode2D.Impulse);
+            rbFlechaArriba.AddForce(referenceFlechaArriba.up * fuerzaFlecha, ForceMode2D.Impulse);
+            rbFlechaLado.AddForce(referenceFlechaLado.up * fuerzaFlecha, ForceMode2D.Impulse);
+            audioPlayer.PlayOneShot(audioDisparar);
+            Destroy(flecha, 2f);
+            Destroy(flechaArriba, 2f);
+            Destroy(flechaLado, 2f);
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
 }
