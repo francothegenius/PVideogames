@@ -41,6 +41,12 @@ public class VerificarSuelo : MonoBehaviour
             player.pisando = true;
         }
 
+        if (collision.gameObject.tag == "sueloRoca")
+        {
+            player.pisandoRoca = true;
+            player.pisando = true;
+        }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -54,6 +60,15 @@ public class VerificarSuelo : MonoBehaviour
             player.transform.parent = null;
             player.pisando = false;
         }
+
+
+        if (collision.gameObject.tag == "sueloRoca")
+        {
+            player.pisandoRoca = false;
+            player.pisando = false;
+        }
     }
+
+
 
 }

@@ -39,10 +39,14 @@ public class player : MonoBehaviour
     public AudioClip audioArco;
     public AudioClip audioCombo;
     public AudioClip comboActivated;
-
+    public bool pisandoPasto;
+    public bool pisandoRoca;
     public bool isMoving=false;
     private GameObject control;
     public AudioClip audioCaminarRoca;
+    public GameObject vidas;
+    private int cor = 4;
+    public bool oneTime = true;
 
 
 
@@ -59,11 +63,17 @@ public class player : MonoBehaviour
         audioPlayer = GetComponent<AudioSource>();
         fuerzaFlecha = 12f;
         control = GameObject.Find("Control");
+        vidas = GameObject.Find("Vidas");
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (cor<1)
+        {
+            Control.instance.RegresarMenu();
+        }
         //asignacion velocidad maxima para evitar que el personaje
         //acumule velocidad
         Vector3 nuevaVelocidad = rb.velocity;
@@ -101,12 +111,20 @@ public class player : MonoBehaviour
 
         //audio pasos
         if (isMoving && pisando)
-        {
+        { 
+            
             //audioPlayer.clip = audioCaminar;
             if (!audioPlayer.isPlaying)
             {
-                audioPlayer.PlayOneShot(audioCaminar);
+                if (pisando && pisandoRoca)
+                {
+                    audioPlayer.PlayOneShot(audioCaminarRoca);
+                } else
+                {
+                    audioPlayer.PlayOneShot(audioCaminar);
+                }
             }
+
         }
 
         //mover personaje segun dirección
@@ -189,6 +207,8 @@ public class player : MonoBehaviour
             speed = 28f;
             JumpForce = 8f;
             Control.instance.resetGame();
+            Control.instance.resetTime();
+            oneTime = true;
         }
 
     }
@@ -241,11 +261,19 @@ public class player : MonoBehaviour
             Destroy(collider.gameObject);
             audioPlayer.PlayOneShot(audioArco);
         }
-        if(collider.gameObject.tag == "limite"){
-            audioPlayer.PlayOneShot(audioWilhelm);
-            barraVida.SendMessage("bajaVida", 100);
-            barraCombo.SendMessage("resetBarraProgeso");
-            Control.instance.Lose();
+
+        if (oneTime)
+        {
+            if (collider.gameObject.tag == "limite")
+            {
+                audioPlayer.PlayOneShot(audioWilhelm);
+                cor--;
+                Control.instance.Lose();
+                barraVida.SendMessage("bajaVida", 100);
+                barraCombo.SendMessage("resetBarraProgeso");
+                vidas.SendMessage("cambioCorazones", cor);
+                oneTime = false;
+            }
         }
     }
 
@@ -275,6 +303,8 @@ public class player : MonoBehaviour
             jump = false;
             JumpForce = 0;
             attack2enabled = false;
+            cor--;
+            vidas.SendMessage("cambioCorazones", cor);
             barraCombo.SendMessage("resetBarraProgeso");
 
         }

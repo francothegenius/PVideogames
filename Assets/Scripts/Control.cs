@@ -65,8 +65,7 @@ public class Control : MonoBehaviour
     {
         loseText.SetActive(true);
         continueText.SetActive(true);
-        Time.timeScale = 0.5f;
-        Invoke("resetTime", 1f);
+        Time.timeScale = 0f;
     }
 
     public void resetTime()

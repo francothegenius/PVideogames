@@ -15,6 +15,7 @@ TagManager:
   - HP
   - arco
   - limite
+  - sueloRoca
   layers:
   - Default
   - TransparentFX

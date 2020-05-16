@@ -63,7 +63,6 @@ public class Enemy : MonoBehaviour
             transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
         }
 
-
     }
 
     private void OnTriggerEnter2D(Collider2D collider){
