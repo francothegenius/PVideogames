@@ -2716,6 +2716,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2002443662}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &353194496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2353785934577341807, guid: cd210a104ef03436494d4fd4f7fff624,
+    type: 3}
+  m_PrefabInstance: {fileID: 1008229769}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &353194497
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353194496}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 17c7c403847a9774faf51c3c085da9b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &382346799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4275791053877509573, guid: b05377a618ad3ae4f808b5a68616c159,
@@ -7332,7 +7357,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: nube (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4501280215602237470, guid: cd210a104ef03436494d4fd4f7fff624,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4501280215602237470, guid: cd210a104ef03436494d4fd4f7fff624, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cd210a104ef03436494d4fd4f7fff624, type: 3}
 --- !u!4 &1022771402 stripped
 Transform:
@@ -15724,6 +15755,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1859835437}
     m_Modifications:
+    - target: {fileID: 4661378878264223017, guid: 35560f8fefce54148b67024eb553334a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b6e6c6cf28dcc1d4284d348c68f57c84, type: 2}
     - target: {fileID: 6826143701068191973, guid: 35560f8fefce54148b67024eb553334a,
         type: 3}
       propertyPath: m_Name
