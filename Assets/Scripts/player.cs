@@ -242,7 +242,10 @@ public class player : MonoBehaviour
         {
             Destroy(collision.gameObject, 0.7f);
             collision.gameObject.SendMessage("estadoMuerte");
-            barraCombo.SendMessage("subirProgreso", 25);
+            if(!comboAttack1){
+                barraCombo.SendMessage("subirProgreso", 25);
+            }
+            
         }
     }
 
