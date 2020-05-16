@@ -306,7 +306,7 @@ public class player : MonoBehaviour
             sp.color = Color.red;
         }
         //player sin vida (muerto)
-        if (barraVida.GetComponent<Transform>().Find("Vida").localScale.x==0f)
+        if (barraVida.GetComponent<Transform>().Find("Vida").localScale.x==0f && vida)
         {
             //audioPlayer.clip = audioMorir;
             audioPlayer.PlayOneShot(audioMorir);
