@@ -358,7 +358,7 @@ public class player : MonoBehaviour
         Rigidbody2D rb = flecha.GetComponent<Rigidbody2D>();
         rb.AddForce(referenceFlecha.up * fuerzaFlecha, ForceMode2D.Impulse);
         audioPlayer.PlayOneShot(audioDisparar);
-        Destroy(flecha, 2f);
+        Destroy(flecha, 1f);
     }
 
     private IEnumerator shootFlechaCombo()

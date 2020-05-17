@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 675151290496858385}
   - component: {fileID: 675151290496858387}
   - component: {fileID: -5121189838493985963}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: skeleton derecha
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 675151290666681383}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Objetivo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
