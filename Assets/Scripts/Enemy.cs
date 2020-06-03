@@ -84,6 +84,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void estadoMuerte(){
+        Score.score += 10;
         death = true;
         audioEnemigo.PlayOneShot(audioMorir);
         collider.enabled = false;

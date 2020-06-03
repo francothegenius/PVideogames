@@ -60,6 +60,7 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Score.score = 0;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
@@ -334,6 +335,7 @@ public class player : MonoBehaviour
             jump = false;
             JumpForce = 0;
             attack2enabled = false;
+            //Score.score=0;
             cor--;
             vidas.SendMessage("cambioCorazones", cor);
             barraCombo.SendMessage("resetBarraProgeso");
