@@ -18,6 +18,8 @@ public class Control : MonoBehaviour
     private Text text;
     private GameObject barraCombo;
     private bool oneTime = false;
+    public GameObject registro;
+    public GameObject submit;
     //public AudioClip audioButton;
 
     void Start(){
@@ -49,6 +51,7 @@ public class Control : MonoBehaviour
     {
         SceneManager.LoadScene(escena);
         audio.Stop();
+        Invoke("resetTime", 0f);
     }
 
     public void Win()
@@ -118,6 +121,8 @@ public class Control : MonoBehaviour
         continueText.SetActive(false);
         fail.SetActive(true);
         tryAgain.SetActive(true);
-        Invoke("RegresarMenu", 5f);
+        registro.SetActive(true);
+        submit.SetActive(true);
+        //Invoke("RegresarMenu", 5f);
     }
 }

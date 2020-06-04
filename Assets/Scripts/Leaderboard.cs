@@ -22,8 +22,8 @@ public class Leaderboard : MonoBehaviour
     //This Example Uses InputFields To Populate The List
     //But You May Use Another Source
     public InputField userName;
-    public InputField score;
-    public InputField display;
+    //public InputField score;
+    public Text display;
 
     //List To Hold "PlayerInfo" Objects
     List<PlayerInfo> collectedStats;
@@ -43,14 +43,14 @@ public class Leaderboard : MonoBehaviour
     public void SubmitButton()
     {
         //Create Object Using Values From InputFields, This Is Done So That A Name And Score Can Easily Be Moved/Sorted At The Same Time
-        PlayerInfo stats = new PlayerInfo(userName.text, int.Parse(score.text));//Depending On How You Obtain The Score, It May Be Necessary To Parse To Integer
+        PlayerInfo stats = new PlayerInfo(userName.text, Score.score);//Depending On How You Obtain The Score, It May Be Necessary To Parse To Integer
 
         //Add The New Player Info To The List
         collectedStats.Add(stats);
 
         //Clear InputFields Now That The Object Has Been Created
         userName.text = "";
-        score.text = "";
+        Score.score= 0;
 
         //Start Sorting Method To Place Object In Correct Index Of List
         SortStats();
