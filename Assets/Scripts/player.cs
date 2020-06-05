@@ -45,6 +45,7 @@ public class player : MonoBehaviour
     public AudioClip audioCombo;
     public AudioClip comboActivated;
     public AudioClip coleccionable;
+    public AudioClip lifeUp;
     public AudioClip audioCaminarRoca;
     public bool pisandoPasto;
     public bool pisandoRoca;
@@ -306,6 +307,15 @@ public class player : MonoBehaviour
                 Score.score += 100;
             }
             col++;
+        }
+
+        if(collider.gameObject.tag == "UP"){
+            if(cor != 4){
+                Destroy(collider.gameObject);
+                audioPlayer.PlayOneShot(lifeUp);
+                vidas.SendMessage("cambioCorazones", cor+1);
+                cor++;
+            }
         }
 
         if (oneTime)
