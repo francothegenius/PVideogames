@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;//Include This If Necessary
+using UnityEngine.SceneManagement;
 
 //This Class Is Used To Make The Storage And Manipulation Of Two Variables Easier
 public class PlayerInfo
@@ -137,7 +138,6 @@ public class Leaderboard : MonoBehaviour
         //Use This To Delete All Names And Scores From The LeaderBoard
         PlayerPrefs.DeleteAll();
         //Clear Current Displayed LeaderBoard
-        display.text = "";
-        Control.instance.SendMessage("CambiarEscena", "Portada");
+        LoadLeaderBoard();
     }
 }
