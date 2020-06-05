@@ -49,9 +49,9 @@ public class Control : MonoBehaviour
     }
     public void CambiarEscena(string escena)
     {
+        Invoke("resetTime", 0f);
         SceneManager.LoadScene(escena);
         audio.Stop();
-        Invoke("resetTime", 0f);
     }
 
     public void Win()

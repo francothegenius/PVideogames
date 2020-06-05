@@ -7,16 +7,23 @@ public class leaderBoardText : MonoBehaviour
 {
     public Text texto;
     private List<PlayerInfo> collectedStats;
+    private bool clear=false;
     // Start is called before the first frame update
     void Start()
     {
+        collectedStats = new List<PlayerInfo>();
         texto.text = LoadLeaderBoard();
     }
 
     // Update is called once per frame
     void Update()
     {
-        texto.text = LoadLeaderBoard();
+       /* if (clear)
+        {
+            ClearPrefs();
+            clear = false;
+            UpdateLeaderBoard();
+        }*/
     }
 
     public string LoadLeaderBoard() {
@@ -42,5 +49,29 @@ public class leaderBoardText : MonoBehaviour
         }
 
         return texto.text;
+    }
+
+    public void UpdateLeaderBoard() {
+        //Clear Current Displayed LeaderBoard
+        texto.text = PlayerPrefs.GetString("LeaderBoards");
+        texto.text = "";
+
+        //Simply Loop Through The List And Add The Name And Score To The Display Text
+        for (int i = 0; i <= collectedStats.Count - 1; i++)
+        {
+            texto.text += collectedStats[i].name + " : " + collectedStats[i].score + "\n";
+        }
+    }
+
+    public void ClearPrefs()
+    {
+        //Use This To Delete All Names And Scores From The LeaderBoard
+        PlayerPrefs.DeleteAll();
+
+        //Clear Current Displayed LeaderBoard
+        texto.text = "";
+    }
+    public void ClearTrue() {
+        this.clear = true;
     }
 }
