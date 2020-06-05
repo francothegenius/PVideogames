@@ -16,6 +16,7 @@ TagManager:
   - arco
   - limite
   - sueloRoca
+  - coleccionable
   layers:
   - Default
   - TransparentFX

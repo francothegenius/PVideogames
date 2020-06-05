@@ -70,7 +70,7 @@ public class Mushroom : MonoBehaviour
     }
 
     public void estadoMuerte(){
-        Score.score += 10;
+        Score.score += 25;
         death = true;
         attack = false;
         audioM.PlayOneShot(audioMorir);

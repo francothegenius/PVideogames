@@ -27,14 +27,11 @@ public class Leaderboard : MonoBehaviour
 
     //List To Hold "PlayerInfo" Objects
     List<PlayerInfo> collectedStats;
-    private Control ctr;
-
     // Use this for initialization
     void Start()
     {
         collectedStats = new List<PlayerInfo>();
         LoadLeaderBoard();
-        ctr = new Control();
     }
 
     // Update is called once per frame
@@ -141,6 +138,6 @@ public class Leaderboard : MonoBehaviour
         PlayerPrefs.DeleteAll();
         //Clear Current Displayed LeaderBoard
         display.text = "";
-        //ctr.SendMessage("CambiarEscena", "Portada");
+        Control.instance.SendMessage("CambiarEscena", "Portada");
     }
 }

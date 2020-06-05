@@ -44,13 +44,15 @@ public class player : MonoBehaviour
     public AudioClip audioEspada;
     public AudioClip audioCombo;
     public AudioClip comboActivated;
+    public AudioClip coleccionable;
+    public AudioClip audioCaminarRoca;
     public bool pisandoPasto;
     public bool pisandoRoca;
     public bool isMoving=false;
     private GameObject control;
-    public AudioClip audioCaminarRoca;
     public GameObject vidas;
     private int cor = 4;
+    private int col = 0;
     public bool oneTime = true;
     private bool canRestart = false;
 
@@ -290,6 +292,20 @@ public class player : MonoBehaviour
             attack2enabled = true;
             Destroy(collider.gameObject);
             audioPlayer.PlayOneShot(audioArco);
+        }
+        if(collider.gameObject.tag == "coleccionable"){
+            Destroy(collider.gameObject);
+            //agregar sonido/cambiar sonido???
+            audioPlayer.PlayOneShot(coleccionable);
+            GameObject colObj = GameObject.Find("coleccionable"+col);
+            SpriteRenderer sp = colObj.GetComponent<SpriteRenderer>();
+            sp.color = Color.white;
+             if(col < 2){
+                Score.score += 50;
+            }else{
+                Score.score += 100;
+            }
+            col++;
         }
 
         if (oneTime)
