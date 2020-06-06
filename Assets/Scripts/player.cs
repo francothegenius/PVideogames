@@ -11,7 +11,7 @@ public class player : MonoBehaviour
     public float JumpForce = 6.5f;
     private Rigidbody2D rb;
     private Animator animator;
-    private bool jump;
+    public bool jump;
     private bool doubleJump;
     private bool movimiento=true;
     private SpriteRenderer sp;

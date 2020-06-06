@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3382119584938069210}
   m_Layer: 0
   m_Name: rockstick
-  m_TagString: sueloRoca
+  m_TagString: barraRoca
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

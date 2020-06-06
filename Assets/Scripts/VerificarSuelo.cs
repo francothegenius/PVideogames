@@ -46,6 +46,12 @@ public class VerificarSuelo : MonoBehaviour
             player.pisandoRoca = true;
             player.pisando = true;
         }
+        if (collision.gameObject.tag == "barraRoca")
+        {
+            player.pisandoRoca = true;
+            player.pisando = false;
+            player.jump = false;
+        }
 
     }
 
@@ -67,6 +73,7 @@ public class VerificarSuelo : MonoBehaviour
             player.pisandoRoca = false;
             player.pisando = false;
         }
+
     }
 
 
