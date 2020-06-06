@@ -85,8 +85,16 @@ public class player : MonoBehaviour
         if (cor<1)
         {
             Control.instance.finishGameFail();
+            vida = false;
+            speed = 0;
+            jump = false;
+            JumpForce = 0;
+            attack2enabled = false;
+            maxSpeed = 0;
+            pisando = true;
 
-        }else{
+        }
+        else{
         //asignacion velocidad maxima para evitar que el personaje
         //acumule velocidad
         Vector3 nuevaVelocidad = rb.velocity;

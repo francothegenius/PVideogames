@@ -23,15 +23,22 @@ public class Control : MonoBehaviour
     public GameObject player;
     public GameObject canvas;
     public GameObject camara;
+    public GameObject control;
+    public GameObject eventSystem;
     public AudioClip nivel2Sonido;
-    private Text textHealth,textCombo, textComboActivated, textScore ;
+    public GameObject health;
+    public GameObject combo;
+    public GameObject score;
+    private Text textHealth,textCombo, textComboActivate, textScore ;
     //public AudioClip audioButton;
 
     void Start(){
-        textHealth = GameObject.Find("health").GetComponent<Text>();
-        textCombo=GameObject.Find("combo").GetComponent<Text>();
-        textComboActivated = GameObject.Find("activateCombo").GetComponent<Text>();
-        textScore = GameObject.Find("Score").GetComponent<Text>();
+
+        textHealth = health.gameObject.GetComponent<Text>();
+        textCombo=combo.gameObject.GetComponent<Text>();
+        textComboActivate =comboText.gameObject.GetComponent<Text>();
+        textScore = score.gameObject.GetComponent<Text>();
+        
         text = comboText.GetComponent<Text>();
         barraCombo = GameObject.Find("ComboBarra");
         audio = GetComponent<AudioSource>();
@@ -60,6 +67,12 @@ public class Control : MonoBehaviour
     {
         Invoke("resetTime", 0f);
         SceneManager.LoadScene(escena);
+        canvas.GetComponent<AudioSource>().Stop();
+        Destroy(canvas);
+        Destroy(control);
+        Destroy(eventSystem);
+        Destroy(player);
+        //Destroy(camara);
         audio.Stop();
     }
 
@@ -77,12 +90,14 @@ public class Control : MonoBehaviour
         player.gameObject.transform.position = new Vector2(0,0);
         canvas.GetComponent<AudioSource>().clip = nivel2Sonido;
         canvas.GetComponent<AudioSource>().Play();
+        DontDestroyOnLoad(control.gameObject);
         DontDestroyOnLoad(player.gameObject);
         DontDestroyOnLoad(canvas.gameObject);
         DontDestroyOnLoad(camara.gameObject);
+        DontDestroyOnLoad(eventSystem.gameObject);
         textHealth.color = Color.white;
         textCombo.color = Color.white;
-        textComboActivated.color = Color.white;
+        textComboActivate.color = Color.white;
         textScore.color = Color.white;
     }
 
@@ -102,6 +117,11 @@ public class Control : MonoBehaviour
     public void resetTime()
     {
         Time.timeScale = 1f;
+    }
+
+    public void iniciarJuego() {
+        Destroy(GameObject.Find("Main Camera2"));
+        SceneManager.LoadScene("Juego");
     }
 
     public void resetGame()

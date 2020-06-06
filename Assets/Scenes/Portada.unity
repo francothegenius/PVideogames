@@ -204,8 +204,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1506585278}
-        m_MethodName: CambiarEscena
-        m_Mode: 5
+        m_MethodName: iniciarJuego
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -795,6 +795,14 @@ MonoBehaviour:
   tryAgain: {fileID: 0}
   comboText: {fileID: 0}
   comboActivated: {fileID: 0}
+  registro: {fileID: 0}
+  submit: {fileID: 0}
+  player: {fileID: 0}
+  canvas: {fileID: 0}
+  camara: {fileID: 0}
+  control: {fileID: 0}
+  eventSystem: {fileID: 0}
+  nivel2Sonido: {fileID: 0}
 --- !u!4 &1506585279
 Transform:
   m_ObjectHideFlags: 0
