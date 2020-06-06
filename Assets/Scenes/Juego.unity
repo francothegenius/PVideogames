@@ -17148,6 +17148,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7079174289647489235, guid: a9da3418411be0143b2018498cfbd547,
+        type: 3}
+      propertyPath: audioVida
+      value: 
+      objectReference: {fileID: 8300000, guid: 180ed7cfccb8e9e409fe485b1b64b935, type: 3}
+    - target: {fileID: 7079174289647489235, guid: a9da3418411be0143b2018498cfbd547,
+        type: 3}
+      propertyPath: lifeUp
+      value: 
+      objectReference: {fileID: 8300000, guid: b8fbbb43fce35704fb1d5f696820b8f9, type: 3}
+    - target: {fileID: 7079174289647489235, guid: a9da3418411be0143b2018498cfbd547,
+        type: 3}
+      propertyPath: audioEspada
+      value: 
+      objectReference: {fileID: 8300000, guid: baaa55dcb5d2f66408042532c54219b9, type: 3}
+    - target: {fileID: 7079174289647489235, guid: a9da3418411be0143b2018498cfbd547,
+        type: 3}
+      propertyPath: coleccionable
+      value: 
+      objectReference: {fileID: 8300000, guid: 10c63736ac17f9642b9a4e2d688dda9b, type: 3}
     - target: {fileID: 7079174289647489241, guid: a9da3418411be0143b2018498cfbd547,
         type: 3}
       propertyPath: m_Name
@@ -17156,7 +17176,7 @@ PrefabInstance:
     - target: {fileID: 7079174289647489244, guid: a9da3418411be0143b2018498cfbd547,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 148
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 7079174289647489244, guid: a9da3418411be0143b2018498cfbd547,
         type: 3}

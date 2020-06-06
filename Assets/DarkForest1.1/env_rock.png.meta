@@ -13,7 +13,7 @@ TextureImporter:
     second: env_rock_2
   - first:
       213: -359003401882473920
-    second: env_rock_3
+    second: sop1
   - first:
       213: 8239160857659893436
     second: env_rock_4
@@ -47,6 +47,12 @@ TextureImporter:
   - first:
       213: -1480235927506507313
     second: env_rock_14
+  - first:
+      213: 5328511898191837469
+    second: supp1
+  - first:
+      213: 6924369546477779360
+    second: supp2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -218,7 +224,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: env_rock_3
+      name: sop1
       rect:
         serializedVersion: 2
         x: 189
@@ -228,7 +234,25 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -51, y: 96}
+        - {x: -51, y: 79}
+        - {x: -48, y: 76}
+        - {x: -51, y: 45}
+        - {x: -51, y: -96}
+        - {x: 51, y: -96}
+        - {x: 51, y: 96}
+      - - {x: -51, y: 23}
+        - {x: -51, y: -23}
+        - {x: -33, y: -21}
+        - {x: -30, y: -20}
+        - {x: -30, y: 23}
+      - - {x: 46, y: 16}
+        - {x: 46, y: -16}
+        - {x: 50, y: -20}
+        - {x: 51, y: -20}
+        - {x: 51, y: 20}
+        - {x: 50, y: 20}
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -306,7 +330,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 363
+        y: 364
         width: 96
         height: 42
       alignment: 7
@@ -465,6 +489,48 @@ TextureImporter:
       bones: []
       spriteID: fc9243d3445257be0800000000000000
       internalID: -1480235927506507313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: supp1
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 411
+        width: 104
+        height: 69
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d19ba29f65da2f940800000000000000
+      internalID: 5328511898191837469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: supp2
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 338
+        width: 46
+        height: 95
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a937576a6d481060800000000000000
+      internalID: 6924369546477779360
       vertices: []
       indices: 
       edges: []
