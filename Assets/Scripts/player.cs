@@ -6,6 +6,7 @@ public class player : MonoBehaviour
 {
     public float maxSpeed = 5f;
     public float speed = 2f;
+    private float h;
     public bool pisando;
     public float JumpForce = 6.5f;
     private Rigidbody2D rb;
@@ -82,17 +83,16 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cor<1)
-        {
-            Control.instance.finishGameFail();
-            vida = false;
-            speed = 0;
-            jump = false;
-            JumpForce = 0;
-            attack2enabled = false;
-            maxSpeed = 0;
-            pisando = true;
+                //animators
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        animator.SetBool("Pisando", pisando);
+        animator.SetBool("attack", attack);
+        animator.SetBool("attack_sec", attack2);
+        animator.SetBool("vida", vida);
+        animator.SetBool("combo_attack_1", comboAttack1);
 
+        if (cor<1){
+            Control.instance.finishGameFail();
         }
         else{
         //asignacion velocidad maxima para evitar que el personaje
@@ -103,17 +103,13 @@ public class player : MonoBehaviour
         {
             rb.velocity = nuevaVelocidad;
         }
-        //animators
-        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-        animator.SetBool("Pisando", pisando);
-        animator.SetBool("attack", attack);
-        animator.SetBool("attack_sec", attack2);
-        animator.SetBool("vida", vida);
-        animator.SetBool("combo_attack_1", comboAttack1);
 
 
         //moviemiento personaje
-        float h = Input.GetAxis("Horizontal");
+        if(vida){
+            h = Input.GetAxis("Horizontal");
+        }
+        
         if (!movimiento)
         {
             h = 0;
@@ -361,6 +357,11 @@ public class player : MonoBehaviour
         //player sin vida (muerto)
         if (barraVida.GetComponent<Transform>().Find("Vida").localScale.x==0f && vida)
         {
+            cor--;
+            if(cor < 1){
+                rb.velocity = Vector2.zero;
+                vida = false;
+            }
             //audioPlayer.clip = audioMorir;
             audioPlayer.PlayOneShot(audioMorir);
             Control.instance.Lose();
@@ -369,8 +370,9 @@ public class player : MonoBehaviour
             jump = false;
             JumpForce = 0;
             attack2enabled = false;
+
             //Score.score=0;
-            cor--;
+
             vidas.SendMessage("cambioCorazones", cor);
             barraCombo.SendMessage("resetBarraProgeso");
             canRestart = true;
