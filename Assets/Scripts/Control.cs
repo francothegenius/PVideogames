@@ -20,12 +20,21 @@ public class Control : MonoBehaviour
     private bool oneTime = false;
     public GameObject registro;
     public GameObject submit;
+    public GameObject player;
+    public GameObject canvas;
+    public GameObject camara;
+    public AudioClip nivel2Sonido;
+    private Text textHealth,textCombo, textComboActivated, textScore ;
     //public AudioClip audioButton;
 
     void Start(){
-
+        textHealth = GameObject.Find("health").GetComponent<Text>();
+        textCombo=GameObject.Find("combo").GetComponent<Text>();
+        textComboActivated = GameObject.Find("activateCombo").GetComponent<Text>();
+        textScore = GameObject.Find("Score").GetComponent<Text>();
         text = comboText.GetComponent<Text>();
         barraCombo = GameObject.Find("ComboBarra");
+        audio = GetComponent<AudioSource>();
     }
 
     void Update(){
@@ -56,9 +65,25 @@ public class Control : MonoBehaviour
 
     public void Win()
     {
-        winText.SetActive(true);
-        Time.timeScale = 0.5f;
-        Invoke("RegresarMenu", 0.9f);
+        //winText.SetActive(true);
+        //Time.timeScale = 0.5f;
+        //Invoke("RegresarMenu", 0.9f);
+        //Scene escena = SceneManager.;
+        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        SceneManager.LoadScene(3);
+        Scene escena = SceneManager.GetSceneByBuildIndex(3);
+        //SceneManager.MoveGameObjectToScene(player.gameObject, escena);
+        //SceneManager.MoveGameObjectToScene(Canvas.gameObject, );
+        player.gameObject.transform.position = new Vector2(0,0);
+        canvas.GetComponent<AudioSource>().clip = nivel2Sonido;
+        canvas.GetComponent<AudioSource>().Play();
+        DontDestroyOnLoad(player.gameObject);
+        DontDestroyOnLoad(canvas.gameObject);
+        DontDestroyOnLoad(camara.gameObject);
+        textHealth.color = Color.white;
+        textCombo.color = Color.white;
+        textComboActivated.color = Color.white;
+        textScore.color = Color.white;
     }
 
     public void RegresarMenu()

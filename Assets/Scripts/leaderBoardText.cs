@@ -18,12 +18,13 @@ public class leaderBoardText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if (clear)
-        {
-            ClearPrefs();
-            clear = false;
-            UpdateLeaderBoard();
-        }*/
+        //  texto.text = PlayerPrefs.GetString("LeaderBoards");
+        /* if (clear)
+         {
+             ClearPrefs();
+             clear = false;
+             UpdateLeaderBoard();
+         }*/
     }
 
     public string LoadLeaderBoard() {
@@ -67,7 +68,7 @@ public class leaderBoardText : MonoBehaviour
     {
         //Use This To Delete All Names And Scores From The LeaderBoard
         PlayerPrefs.DeleteAll();
-
+    
         //Clear Current Displayed LeaderBoard
         texto.text = "";
     }
