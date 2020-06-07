@@ -65,8 +65,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04ebe8e11818854bb95994904d61568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  rango: 1
+  attack: {fileID: 8300000, guid: 6d07dacf941681a44b4a9768b1380a55, type: 3}
+  speed: 3
+  rango: 4
 --- !u!1102 &-7125810684424825905
 AnimatorState:
   serializedVersion: 5
@@ -384,6 +385,7 @@ AnimatorState:
   - {fileID: -3996035799580229967}
   m_StateMachineBehaviours:
   - {fileID: -7162517439953257670}
+  - {fileID: 5480646960976486755}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -537,31 +539,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: enojado
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: atacar2
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: atacar3
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: muerto
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -820,8 +822,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04ebe8e11818854bb95994904d61568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: {fileID: 8300000, guid: 6d07dacf941681a44b4a9768b1380a55, type: 3}
   speed: 2.5
   rango: 2
+--- !u!114 &5480646960976486755
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7d6392a5ea99d4c803c5da2caf05e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enrage: {fileID: 8300000, guid: 081176df665dbdb488bc7e06f34f75da, type: 3}
 --- !u!1102 &5608451293398195211
 AnimatorState:
   serializedVersion: 5

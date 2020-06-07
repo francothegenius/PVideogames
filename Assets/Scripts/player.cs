@@ -319,13 +319,16 @@ public class player : MonoBehaviour
             GameObject colObj = GameObject.Find("coleccionable"+col);
             SpriteRenderer sp = colObj.GetComponent<SpriteRenderer>();
             sp.color = Color.white;
-            if(col < 2){
+            if (nextLevel && Boss.muerto)
+            {
+                Control.instance.finishGameWin();
+                Boss.muerto = false;
+            }
+            if (col < 2){
                 Score.score += 50;
             }else{
                 Score.score += 100;
-                if(nextLevel){
-                    Control.instance.finishGameWin();
-                }
+               
             }
             col++;
         }

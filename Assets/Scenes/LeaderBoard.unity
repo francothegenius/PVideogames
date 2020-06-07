@@ -789,6 +789,20 @@ MonoBehaviour:
   comboActivated: {fileID: 0}
   registro: {fileID: 0}
   submit: {fileID: 0}
+  player: {fileID: 0}
+  referenciaBoss: {fileID: 0}
+  canvas: {fileID: 0}
+  coleccionable1: {fileID: 0}
+  coleccionable2: {fileID: 0}
+  coleccionable3: {fileID: 0}
+  camara: {fileID: 0}
+  control: {fileID: 0}
+  eventSystem: {fileID: 0}
+  nivel2Sonido: {fileID: 0}
+  health: {fileID: 0}
+  combo: {fileID: 0}
+  score: {fileID: 0}
+  bossBarra: {fileID: 0}
 --- !u!4 &1155336485
 Transform:
   m_ObjectHideFlags: 0
@@ -1009,7 +1023,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.024994}
-  m_SizeDelta: {x: 814, y: 457.95}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1626076814
 MonoBehaviour:
@@ -1081,7 +1095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 175}
+  m_AnchoredPosition: {x: 0, y: 218}
   m_SizeDelta: {x: 339.8, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863953604

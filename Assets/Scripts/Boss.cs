@@ -6,13 +6,19 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 
 {
+	private AudioSource au;
+	public AudioClip pain;
+	public AudioClip death;
+	public AudioClip angry;
 	private int health=100;
 	private GameObject healthBar;
 	private Transform player;
 	private SpriteRenderer sp;
 	public GameObject coleccionable;
 	public bool vidaBaja;
+	private bool isAngry;
 	private bool coleccionableCreated = false;
+	public static bool muerto=false;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -20,6 +26,8 @@ public class Boss : MonoBehaviour
 		healthBar = GameObject.Find("BossBar");
 		vidaBaja = false;
 		sp = GetComponent<SpriteRenderer>();
+		au = GetComponent<AudioSource>();
+		isAngry = false;
 	}
 
     // Update is called once per frame
@@ -51,15 +59,20 @@ public class Boss : MonoBehaviour
 	}
 
 	public void bajarVida() {
+		au.PlayOneShot(pain);
 		Invoke("cambioColor", 0.8f);
 		sp.color = Color.red;
 		health -= 10;
-		if (health <= 50) {
+		if (health <= 50 && !isAngry) {
 			GetComponent<Animator>().SetBool("enojado", true);
+			au.PlayOneShot(angry);
+			isAngry = true;
 		}
 
 		if (health<=0) {
 			GetComponent<Animator>().SetBool("muerto", true);
+			au.PlayOneShot(death);
+			muerto = true;
 			if(!coleccionableCreated){
 				Instantiate(coleccionable, gameObject.transform.position, gameObject.transform.rotation);
 				coleccionableCreated = true;

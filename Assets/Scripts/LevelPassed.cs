@@ -23,6 +23,7 @@ public class LevelPassed : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
+            Destroy(gameObject);
             audioLevel.PlayOneShot(audioGoal);
             Control.instance.winLevel();
 

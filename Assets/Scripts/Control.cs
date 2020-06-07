@@ -79,12 +79,13 @@ public class Control : MonoBehaviour
         Destroy(player);
         //Destroy(camara);
         audio.Stop();
+        player.gameObject.GetComponent<player>().nextLevel = false;
     }
 
     public void winLevel(){
         winText.SetActive(true);
         Time.timeScale = 0.5f;
-        Invoke("nextLevel", 3f);
+        Invoke("nextLevel", 1f);
     }
     public void nextLevel()
     {
@@ -98,7 +99,7 @@ public class Control : MonoBehaviour
         Scene escena = SceneManager.GetSceneByBuildIndex(3);
         //SceneManager.MoveGameObjectToScene(player.gameObject, escena);
         //SceneManager.MoveGameObjectToScene(Canvas.gameObject, );
-        player.gameObject.transform.position = new Vector2(65,3);
+        player.gameObject.transform.position = new Vector2(-6,2);
         canvas.GetComponent<AudioSource>().clip = nivel2Sonido;
         canvas.GetComponent<AudioSource>().Play();
         //coleccionables
