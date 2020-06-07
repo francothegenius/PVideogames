@@ -81,10 +81,16 @@ public class Control : MonoBehaviour
         audio.Stop();
     }
 
-    public void Win()
+    public void winLevel(){
+        winText.SetActive(true);
+        Time.timeScale = 0.5f;
+        Invoke("nextLevel", 3f);
+    }
+    public void nextLevel()
     {
-        //winText.SetActive(true);
-        //Time.timeScale = 0.5f;
+        winText.SetActive(false);
+        Time.timeScale = 1f;
+
         //Invoke("RegresarMenu", 0.9f);
         //Scene escena = SceneManager.;
         //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());

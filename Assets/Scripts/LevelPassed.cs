@@ -24,7 +24,7 @@ public class LevelPassed : MonoBehaviour
         if (collider.tag == "Player")
         {
             audioLevel.PlayOneShot(audioGoal);
-            Control.instance.Win();
+            Control.instance.winLevel();
 
         }
         //Debug.Log("Entro");
