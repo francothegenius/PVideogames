@@ -60,6 +60,7 @@ public class player : MonoBehaviour
     public GameObject boss;
     public Transform referenceBoss;
     private bool bossCreated = false;
+    public bool nextLevel = false;
 
     // Start is called before the first frame update
     void Start()
@@ -322,6 +323,9 @@ public class player : MonoBehaviour
                 Score.score += 50;
             }else{
                 Score.score += 100;
+                if(nextLevel){
+                    Control.instance.finishGameWin();
+                }
             }
             col++;
         }

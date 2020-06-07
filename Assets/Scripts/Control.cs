@@ -106,6 +106,7 @@ public class Control : MonoBehaviour
         coleccionable2.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f);
         coleccionable3.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f);
         player.gameObject.GetComponent<player>().col = 0;
+        player.gameObject.GetComponent<player>().nextLevel = true;
         DontDestroyOnLoad(control.gameObject);
         DontDestroyOnLoad(player.gameObject);
         DontDestroyOnLoad(referenciaBoss.gameObject);
@@ -183,6 +184,13 @@ public class Control : MonoBehaviour
         continueText.SetActive(false);
         fail.SetActive(true);
         tryAgain.SetActive(true);
+        registro.SetActive(true);
+        submit.SetActive(true);
+        //Invoke("RegresarMenu", 5f);
+    }
+
+        public void finishGameWin(){
+        winText.SetActive(true);
         registro.SetActive(true);
         submit.SetActive(true);
         //Invoke("RegresarMenu", 5f);
