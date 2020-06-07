@@ -196,4 +196,10 @@ public class Control : MonoBehaviour
         submit.SetActive(true);
         //Invoke("RegresarMenu", 5f);
     }
+
+        public void quit()
+        {
+        //UnityEngine.Debug.LogError("Exit Game");
+           Application.Quit();
+        }
 }
