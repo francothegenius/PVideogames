@@ -9,13 +9,17 @@ public class Boss : MonoBehaviour
 	private int health=100;
 	private GameObject healthBar;
 	private Transform player;
+	private SpriteRenderer sp;
+	public GameObject coleccionable;
 	public bool vidaBaja;
+	private bool coleccionableCreated = false;
 	// Start is called before the first frame update
 	void Start()
     {
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		healthBar = GameObject.Find("BossBar");
 		vidaBaja = false;
+		sp = GetComponent<SpriteRenderer>();
 	}
 
     // Update is called once per frame
@@ -47,6 +51,8 @@ public class Boss : MonoBehaviour
 	}
 
 	public void bajarVida() {
+		Invoke("cambioColor", 0.8f);
+		sp.color = Color.red;
 		health -= 10;
 		if (health <= 50) {
 			GetComponent<Animator>().SetBool("enojado", true);
@@ -54,8 +60,16 @@ public class Boss : MonoBehaviour
 
 		if (health<=0) {
 			GetComponent<Animator>().SetBool("muerto", true);
+			if(!coleccionableCreated){
+				Instantiate(coleccionable, gameObject.transform.position, gameObject.transform.rotation);
+				coleccionableCreated = true;
+			}
 			Destroy(gameObject,0.8f);
 			Score.score += 1000;
 		}
+	}
+
+	private void cambioColor(){
+		sp.color = Color.white;
 	}
 }

@@ -21,6 +21,7 @@ TagManager:
   - barraRoca
   - nivelBoss
   - Boss
+  - coleccionableF
   layers:
   - Default
   - TransparentFX

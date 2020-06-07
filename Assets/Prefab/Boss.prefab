@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687eb103b0bfaa545acfe23e40bb8fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coleccionable: {fileID: 4049951556517748292, guid: ae02e17c80a6242929679706f4c6366b,
+    type: 3}
   vidaBaja: 0
   isFlipped: 0
 --- !u!114 &2793665045798844331

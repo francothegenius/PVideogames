@@ -54,7 +54,7 @@ public class player : MonoBehaviour
     private GameObject control;
     public GameObject vidas;
     private int cor = 4;
-    private int col = 0;
+    public int col = 0;
     public bool oneTime = true;
     private bool canRestart = false;
     public GameObject boss;
@@ -314,18 +314,18 @@ public class player : MonoBehaviour
         }
         if(collider.gameObject.tag == "coleccionable"){
             Destroy(collider.gameObject);
-            //agregar sonido/cambiar sonido???
             audioPlayer.PlayOneShot(coleccionable);
             GameObject colObj = GameObject.Find("coleccionable"+col);
             SpriteRenderer sp = colObj.GetComponent<SpriteRenderer>();
             sp.color = Color.white;
-             if(col < 2){
+            if(col < 2){
                 Score.score += 50;
             }else{
                 Score.score += 100;
             }
             col++;
         }
+
 
         if(collider.gameObject.tag == "UP"){
             if(cor != 4){

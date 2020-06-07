@@ -23,6 +23,9 @@ public class Control : MonoBehaviour
     public GameObject player;
     public GameObject referenciaBoss;
     public GameObject canvas;
+    public GameObject coleccionable1;
+    public GameObject coleccionable2;
+    public GameObject coleccionable3;
     public GameObject camara;
     public GameObject control;
     public GameObject eventSystem;
@@ -92,6 +95,11 @@ public class Control : MonoBehaviour
         player.gameObject.transform.position = new Vector2(65,3);
         canvas.GetComponent<AudioSource>().clip = nivel2Sonido;
         canvas.GetComponent<AudioSource>().Play();
+        //coleccionables
+        coleccionable1.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f,0f, 0f);
+        coleccionable2.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f);
+        coleccionable3.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f);
+        player.gameObject.GetComponent<player>().col = 0;
         DontDestroyOnLoad(control.gameObject);
         DontDestroyOnLoad(player.gameObject);
         DontDestroyOnLoad(referenciaBoss.gameObject);
