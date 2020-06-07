@@ -57,9 +57,9 @@ public class player : MonoBehaviour
     private int col = 0;
     public bool oneTime = true;
     private bool canRestart = false;
-
-
-
+    public GameObject boss;
+    public Transform referenceBoss;
+    private bool bossCreated = false;
 
     // Start is called before the first frame update
     void Start()
@@ -270,6 +270,14 @@ public class player : MonoBehaviour
             }
             
         }
+
+        if (collision.gameObject.tag=="Boss" &&(attack || comboAttack1)) {
+            collision.gameObject.SendMessage("bajarVida");
+            if (!comboAttack1)
+            {
+                barraCombo.SendMessage("subirProgreso", 25);
+            }
+        }
     }
 
     //checkpoint
@@ -334,6 +342,19 @@ public class player : MonoBehaviour
                 vidas.SendMessage("cambioCorazones", cor);
                 oneTime = false;
                 canRestart = true;
+            }
+        }
+
+        if (collider.gameObject.tag == "nivelBoss") {
+
+            if (!bossCreated)
+            {
+                control.GetComponent<Control>().bossBarra.SetActive(true);
+                Destroy(collider.gameObject);
+                //instanciar a boss
+                Instantiate(boss, referenceBoss.position, referenceBoss.rotation);
+                //destruir el objeto
+                bossCreated = true;
             }
         }
     }

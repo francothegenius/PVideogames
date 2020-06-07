@@ -48,7 +48,6 @@ public class VerificarSuelo : MonoBehaviour
         }
         if (collision.gameObject.tag == "barraRoca")
         {
-            player.pisandoRoca = true;
             player.pisando = false;
             player.jump = false;
         }

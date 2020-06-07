@@ -18,6 +18,9 @@ TagManager:
   - sueloRoca
   - coleccionable
   - UP
+  - barraRoca
+  - nivelBoss
+  - Boss
   layers:
   - Default
   - TransparentFX

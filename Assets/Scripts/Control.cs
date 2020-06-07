@@ -21,6 +21,7 @@ public class Control : MonoBehaviour
     public GameObject registro;
     public GameObject submit;
     public GameObject player;
+    public GameObject referenciaBoss;
     public GameObject canvas;
     public GameObject camara;
     public GameObject control;
@@ -29,6 +30,7 @@ public class Control : MonoBehaviour
     public GameObject health;
     public GameObject combo;
     public GameObject score;
+    public GameObject bossBarra;
     private Text textHealth,textCombo, textComboActivate, textScore ;
     //public AudioClip audioButton;
 
@@ -38,7 +40,7 @@ public class Control : MonoBehaviour
         textCombo=combo.gameObject.GetComponent<Text>();
         textComboActivate =comboText.gameObject.GetComponent<Text>();
         textScore = score.gameObject.GetComponent<Text>();
-        
+        //bossBarra = GameObject.Find("BossBar");
         text = comboText.GetComponent<Text>();
         barraCombo = GameObject.Find("ComboBarra");
         audio = GetComponent<AudioSource>();
@@ -87,11 +89,12 @@ public class Control : MonoBehaviour
         Scene escena = SceneManager.GetSceneByBuildIndex(3);
         //SceneManager.MoveGameObjectToScene(player.gameObject, escena);
         //SceneManager.MoveGameObjectToScene(Canvas.gameObject, );
-        player.gameObject.transform.position = new Vector2(0,0);
+        player.gameObject.transform.position = new Vector2(65,3);
         canvas.GetComponent<AudioSource>().clip = nivel2Sonido;
         canvas.GetComponent<AudioSource>().Play();
         DontDestroyOnLoad(control.gameObject);
         DontDestroyOnLoad(player.gameObject);
+        DontDestroyOnLoad(referenciaBoss.gameObject);
         DontDestroyOnLoad(canvas.gameObject);
         DontDestroyOnLoad(camara.gameObject);
         DontDestroyOnLoad(eventSystem.gameObject);
