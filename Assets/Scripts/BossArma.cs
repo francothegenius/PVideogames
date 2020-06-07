@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class BossArma : MonoBehaviour
 {
+
+	public int attackDamage = 20;
+	public int enragedAttackDamage = 40;
+	private GameObject player;
+	public Vector3 attackOffset;
+	public float attackRange = 0.8f;
+	public LayerMask attackMask;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -15,12 +22,6 @@ public class BossArma : MonoBehaviour
     {
         
     }
-	public int attackDamage = 20;
-	public int enragedAttackDamage = 40;
-
-	public Vector3 attackOffset;
-	public float attackRange = 1f;
-	public LayerMask attackMask;
 
 	public void Attack()
 	{
@@ -29,7 +30,7 @@ public class BossArma : MonoBehaviour
 		pos += transform.up * attackOffset.y;
 
 		Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
-		if (colInfo != null)
+		if (colInfo != null && !player.GetComponent<player>().attack)
 		{
 			colInfo.SendMessage("atacado", transform.position.x);
 		}

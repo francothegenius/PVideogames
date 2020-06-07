@@ -18,7 +18,7 @@ public class player : MonoBehaviour
     private bool vida;
     private GameObject barraVida;
     private GameObject barraCombo;
-    private bool attack;
+    public bool attack;
     private bool attack2;
     private bool attack2enabled;
     private bool comboAttack1;
@@ -29,7 +29,7 @@ public class player : MonoBehaviour
     public Transform referenceFlechaLado;
     public float fuerzaFlecha;
     private IEnumerator comboFlecha;
-    private Collider2D collider;
+    public Collider2D collider;
     private Vector3 respawn;
     private AudioSource audioPlayer;
     public AudioClip audioCaminar;
@@ -271,13 +271,19 @@ public class player : MonoBehaviour
             
         }
 
-        if (collision.gameObject.tag=="Boss" &&(attack || comboAttack1)) {
-            collision.gameObject.SendMessage("bajarVida");
-            if (!comboAttack1)
-            {
-                barraCombo.SendMessage("subirProgreso", 25);
+        if (collision.gameObject.tag=="Boss") {
+            if(attack || comboAttack1){
+                collision.gameObject.SendMessage("bajarVida");
+                if (!comboAttack1)
+                {
+                    barraCombo.SendMessage("subirProgreso", 25);
+                }
+            } else{
+                atacado(collision.transform.position.y);
             }
+
         }
+
     }
 
     //checkpoint

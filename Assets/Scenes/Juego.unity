@@ -4978,12 +4978,12 @@ PrefabInstance:
     - target: {fileID: 4049951556517748294, guid: ae02e17c80a6242929679706f4c6366b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5555756
+      value: 75.94
       objectReference: {fileID: 0}
     - target: {fileID: 4049951556517748294, guid: ae02e17c80a6242929679706f4c6366b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.26469
+      value: -1.49
       objectReference: {fileID: 0}
     - target: {fileID: 4049951556517748294, guid: ae02e17c80a6242929679706f4c6366b,
         type: 3}
@@ -5527,6 +5527,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rockstick (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382119584938069210, guid: 1dc524cc781bc4408ba54e06b3643d0c,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.54347503
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382119584938069210, guid: 1dc524cc781bc4408ba54e06b3643d0c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.8330498
       objectReference: {fileID: 0}
     - target: {fileID: 3382119584938069220, guid: 1dc524cc781bc4408ba54e06b3643d0c,
         type: 3}
@@ -6856,12 +6866,12 @@ PrefabInstance:
     - target: {fileID: 4049951556517748294, guid: ae02e17c80a6242929679706f4c6366b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.925886
+      value: 138.35
       objectReference: {fileID: 0}
     - target: {fileID: 4049951556517748294, guid: ae02e17c80a6242929679706f4c6366b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.26469
+      value: -3.56
       objectReference: {fileID: 0}
     - target: {fileID: 4049951556517748294, guid: ae02e17c80a6242929679706f4c6366b,
         type: 3}
@@ -7951,6 +7961,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 54831856}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1031440572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1031440573}
+  - component: {fileID: 1031440574}
+  m_Layer: 0
+  m_Name: limitebarra
+  m_TagString: sueloRoca
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1031440573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031440572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1093960719}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1031440574
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031440572}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.18248248, y: -0.008593124}
+  - {x: 0.16159411, y: -0.008592759}
 --- !u!1001 &1033711173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9634,7 +9693,7 @@ PrefabInstance:
     - target: {fileID: 675151290496858395, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 138.42958
+      value: 139.21
       objectReference: {fileID: 0}
     - target: {fileID: 675151290496858395, guid: b21a788a810f64e8db8a03c90909deb5,
         type: 3}
@@ -12768,6 +12827,16 @@ PrefabInstance:
       propertyPath: m_UsedByEffector
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3382119584938069210, guid: 1dc524cc781bc4408ba54e06b3643d0c,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.54778194
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382119584938069210, guid: 1dc524cc781bc4408ba54e06b3643d0c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.82443595
+      objectReference: {fileID: 0}
     - target: {fileID: 3382119584938069220, guid: 1dc524cc781bc4408ba54e06b3643d0c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15175,6 +15244,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1059819901}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1956635001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1956635002}
+  - component: {fileID: 1956635003}
+  m_Layer: 0
+  m_Name: limitebarra
+  m_TagString: sueloRoca
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1956635002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956635001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1193738422}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1956635003
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956635001}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 0fb045eec2a928547893e883ca1fc57a, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.16933729, y: -0.009067951}
+  - {x: 0.16933729, y: -0.009067951}
 --- !u!1001 &1960728460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17128,12 +17246,12 @@ PrefabInstance:
     - target: {fileID: 4049951556517748294, guid: ae02e17c80a6242929679706f4c6366b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.97434795
+      value: 35.58
       objectReference: {fileID: 0}
     - target: {fileID: 4049951556517748294, guid: ae02e17c80a6242929679706f4c6366b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.258021
+      value: -3.49
       objectReference: {fileID: 0}
     - target: {fileID: 4049951556517748294, guid: ae02e17c80a6242929679706f4c6366b,
         type: 3}
