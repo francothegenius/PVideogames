@@ -237,10 +237,11 @@ public class player : MonoBehaviour
             Control.instance.resetTime();
             oneTime = true;
             canRestart = false;
-        }
 
         }
+
     }
+}
 
     //metodo utilizado para activar collider despues de ataque
     //es necesitado ya que el ataque es cercano a enemigo
@@ -410,7 +411,6 @@ public class player : MonoBehaviour
             vidas.SendMessage("cambioCorazones", cor);
             barraCombo.SendMessage("resetBarraProgeso");
             canRestart = true;
-
         }
 
     }
